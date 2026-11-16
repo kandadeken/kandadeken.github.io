@@ -34,61 +34,77 @@
      files are fetched early so the headline and prices draw in the right font. -->
 <link rel="preload" href="/fonts/montserrat-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/montserrat-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/_astro/index.Cm9JrFxD.css"><!-- PREVIEW ONLY (16 Nov 2026): material and colour test. Added to this preview copy only; not in the website's code. -->
+<link rel="stylesheet" href="/_astro/index.Cm9JrFxD.css"><!-- PREVIEW ONLY (16 Nov 2026): consolidated material and colour preview. Added to this preview copy only; not in the website's code. -->
 <style id="tcp-preview">
 @font-face{font-family:JostPreview;font-weight:700;src:url(/preview-assets/jost-latin-700-normal.woff2) format("woff2")}
-/* Identity colours. --y = main action colour (Ochre A by default); --y2 = Ochre B for secondary accents */
-:root{--y:#D27D02;--y2:#B97819;--y-soft:#F2DDBA;--ink:#131514}
-html[data-b=bright]{--y:#E08A04;--y-soft:#F6DFB8}
-/* Page colour temperature */
-html[data-t=warm]{--pg:#F7F4EF}
-html[data-t=less]{--pg:#F6F4F2}
-html[data-t=neutral]{--pg:#F4F4F4}
-:root{--bg:var(--pg)}
-/* Concrete strength: 25, 30 or 45 % of the reference board's concrete */
-html[data-t=warm][data-k="25"]{--tex:url(/preview-assets/concrete-warm-25.webp)}html[data-t=warm][data-k="30"]{--tex:url(/preview-assets/concrete-warm-30.webp)}html[data-t=warm][data-k="45"]{--tex:url(/preview-assets/concrete-warm-45.webp)}
-html[data-t=less][data-k="25"]{--tex:url(/preview-assets/concrete-less-25.webp)}html[data-t=less][data-k="30"]{--tex:url(/preview-assets/concrete-less-30.webp)}html[data-t=less][data-k="45"]{--tex:url(/preview-assets/concrete-less-45.webp)}
-html[data-t=neutral][data-k="25"]{--tex:url(/preview-assets/concrete-neutral-25.webp)}html[data-t=neutral][data-k="30"]{--tex:url(/preview-assets/concrete-neutral-30.webp)}html[data-t=neutral][data-k="45"]{--tex:url(/preview-assets/concrete-neutral-45.webp)}
+/* One interface ochre (--y) for buttons and accents; Ochre B retired. The emblem stays Ochre A. */
+:root{--ink:#131514;--pg:#F4F4F4;--bg:var(--pg);--y:#F08F02}
+html[data-b=a]{--y:#D27D02}html[data-b=b1]{--y:#E08A04}html[data-b=b2]{--y:#F08F02}html[data-b=b3]{--y:#FF9802}html[data-b=b4]{--y:#FF8C00}
+:root{--y-soft:color-mix(in srgb,var(--y) 28%,#fff)}
+/* Neutral page with 25% concrete (Flat for comparison) */
 body{background-color:var(--pg)}
-html:not([data-k="0"]) body{background-image:var(--tex);background-size:512px 512px}
+html[data-k="25"] body{background-image:url(/preview-assets/concrete-neutral-25.webp);background-size:512px 512px}
 .hero,.sec,.sec.alt{background:transparent}
-/* Functional surfaces stay flat */
 #catalog{background:var(--pg);border-radius:var(--r-panel);box-shadow:0 0 0 20px var(--pg),0 0 0 21px var(--line)}
 .docket,.dh{background:var(--pg)}
 @media (max-width:899px){#catalog{border-radius:0;box-shadow:0 0 0 16px var(--pg)}
   .hpic img{-webkit-mask-image:linear-gradient(180deg,transparent,#000 22%,#000 90%,transparent);mask-image:linear-gradient(180deg,transparent,#000 22%,#000 90%,transparent)}}
-/* Ochre B for secondary accents: active tab, menu hover, footer and phone-bar rules */
-.tabs button[aria-pressed="true"]{border-bottom-color:var(--y2)}
-nav a:hover{border-bottom-color:var(--y2)}
-.foot,.bar{border-top-color:var(--y2)}
-/* V1.1 logo */
-.brand svg,.brand span,.foot svg{display:none}
+.tabs button[aria-pressed="true"],nav a:hover{border-bottom-color:var(--y)}
+.foot,.bar{border-top-color:var(--y)}
+/* V1.1 logo in the header */
+.brand svg,.brand span{display:none}
 .brand img{display:block}
 .brand .nm-line{font:700 16px/1 JostPreview,Montserrat,sans-serif;white-space:nowrap;letter-spacing:.01em}
-@media (max-width:429px){.hin .wa span{display:none}.hin .wa{padding:10px 12px}}
+/* One "Enquire" in place of the WhatsApp button and "Call us" */
+.hin .wa,.htx .btn2,#contact .wa.big{display:none!important}
+.pv-enq{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:var(--tap);padding:10px 16px;border-radius:var(--r-control);font:var(--w-label) var(--t-small)/1 var(--font);cursor:pointer;white-space:nowrap}
+.pv-enq.p{background:var(--y);color:var(--ink);border:1px solid var(--y)}
+.pv-enq.s{background:var(--card);color:var(--ink);border:1px solid var(--ink);font-size:var(--t-body)}
+.pv-enq.big{padding:12px 22px;font-size:var(--t-body)}
+.pv-enq svg.chev{width:14px;height:14px;transition:transform .15s}.pv-enq[aria-expanded=true] svg.chev{transform:rotate(180deg)}
+#pv-menu{position:fixed;z-index:30;background:var(--card);border:1px solid var(--line);border-radius:var(--r-panel);box-shadow:0 10px 30px rgba(0,0,0,.14);padding:6px;min-width:250px;display:none}
+#pv-menu.open{display:block}
+#pv-menu a{display:flex;align-items:center;gap:12px;min-height:52px;padding:8px 12px;border-radius:6px;color:var(--ink);text-decoration:none;font-weight:var(--w-label)}
+#pv-menu a:hover,#pv-menu a:focus-visible{background:var(--pg)}
+#pv-menu a svg{width:22px;height:22px;flex:none}
+#pv-menu small{display:block;font-weight:400;color:var(--mute);font-size:var(--t-small)}
+#pv-scrim{position:fixed;inset:0;background:rgba(19,21,20,.35);z-index:29;display:none}
+@media (max-width:599px){#pv-menu{left:0!important;right:0;bottom:0;top:auto!important;border-radius:14px 14px 0 0;padding:10px 12px calc(14px + env(safe-area-inset-bottom,0px))}
+  #pv-menu.open+#pv-scrim{display:block}#pv-menu .grab{display:block;width:40px;height:4px;border-radius:2px;background:var(--line);margin:2px auto 8px}}
+#pv-menu .grab{display:none}
+@media (max-width:429px){.hin{gap:8px}.brand .nm-line{font-size:15px}.hin .pv-enq.p{padding:10px}.hin .pv-enq.p svg.chev{display:none}}
+@media (max-width:379px){.brand .nm-line{font-size:14px}.brand img.pv{height:36px!important}}
+/* Footer: horizontal logo on one line */
+.foot svg{display:none}
+.foot div{flex-direction:column;align-items:flex-start;gap:14px}
+.foot .pv-hlogo{display:block;height:64px;width:auto;max-width:100%}
+.foot p b{display:none} /* the logo above now carries the name */
+@media (max-width:599px){.foot .pv-hlogo{height:56px}}
 /* The preview switch */
 #tcp-pv{font:600 13px/1.3 Montserrat,system-ui,sans-serif;background:#131514;color:#fff;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;position:relative;z-index:20}
 #tcp-pv b{color:#D27D02;letter-spacing:.08em}
 #tcp-pv span{display:inline-flex;gap:4px;align-items:center;flex-wrap:wrap}
-#tcp-pv button{font:inherit;min-height:32px;padding:4px 9px;border-radius:5px;border:1px solid #5d5a54;background:transparent;color:#fff;cursor:pointer}
-#tcp-pv button[aria-pressed=true]{background:#D27D02;border-color:#D27D02;color:#131514}
+#tcp-pv button{font:inherit;min-height:32px;padding:4px 8px;border-radius:5px;border:1px solid #5d5a54;background:transparent;color:#fff;cursor:pointer}
+#tcp-pv button i{display:inline-block;width:12px;height:12px;border-radius:2px;vertical-align:-1px;margin-right:5px}
+#tcp-pv button[aria-pressed=true]{background:#fff;border-color:#fff;color:#131514}
 </style>
 <script>
 (function(){
   var q=new URLSearchParams(location.search),h=document.documentElement;
-  var OPT={t:['warm','less','neutral'],k:['0','25','30','45'],b:['a','bright']},DEF={t:'neutral',k:'25',b:'a'};
+  var OPT={b:['a','b1','b2','b3','b4'],k:['0','25']},DEF={b:'b2',k:'25'};
   Object.keys(OPT).forEach(function(k){var v=q.get(k);h.dataset[k]=OPT[k].indexOf(v)>=0?v:DEF[k]});
+  var CHEV='<svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
   document.addEventListener('DOMContentLoaded',function(){
     var bar=document.createElement('div');bar.id='tcp-pv';
-    bar.innerHTML='<b>PREVIEW</b>'+
-     '<span>Colour: <button data-k="t" data-v="warm">Warm</button><button data-k="t" data-v="less">50% less warm</button><button data-k="t" data-v="neutral">Neutral</button></span>'+
-     '<span>Concrete: <button data-k="k" data-v="0">Flat</button><button data-k="k" data-v="25">25%</button><button data-k="k" data-v="30">30%</button><button data-k="k" data-v="45">45%</button></span>'+
-     '<span>Buttons: <button data-k="b" data-v="a">Ochre A</button><button data-k="b" data-v="bright">Brighter</button></span>';
+    var sw=[['a','#D27D02','Ochre A'],['b1','#E08A04','#E08A04'],['b2','#F08F02','#F08F02'],['b3','#FF9802','#FF9802'],['b4','#FF8C00','#FF8C00']];
+    bar.innerHTML='<b>PREVIEW</b><span>Button ochre: '+sw.map(function(s){return '<button data-k="b" data-v="'+s[0]+'"><i style="background:'+s[1]+'"></i>'+s[2]+'</button>'}).join('')+'</span>'+
+      '<span>Page: <button data-k="k" data-v="25">Concrete 25%</button><button data-k="k" data-v="0">Flat</button></span>';
     document.body.prepend(bar);
     function sync(){bar.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',h.dataset[b.dataset.k]===b.dataset.v)})}
     bar.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;h.dataset[b.dataset.k]=b.dataset.v;sync();
       var u=new URL(location.href);Object.keys(OPT).forEach(function(k){u.searchParams.set(k,h.dataset[k])});history.replaceState(null,'',u)});
     sync();
+    // Header logo
     var br=document.querySelector('.brand');
     if(br){var wide=matchMedia('(min-width:900px)');
       function logo(){br.querySelectorAll('.pv').forEach(function(x){x.remove()});
@@ -96,8 +112,33 @@ nav a:hover{border-bottom-color:var(--y2)}
         if(wide.matches){i.src='/preview-assets/tcp-logo-primary-on-light.svg';i.style.height='65px';br.prepend(i)}
         else{i.src='/preview-assets/tcp-emblem-compact-ochre.svg';i.style.height='40px';br.prepend(i);var s=document.createElement('b');s.className='pv nm-line';s.textContent='THE CEMENT PEOPLE';br.append(s)}}
       logo();wide.addEventListener('change',logo)}
+    // Footer horizontal logo
     var f=document.querySelector('.foot div');
-    if(f){var e=document.createElement('img');e.src='/preview-assets/tcp-emblem-compact-ochre.svg';e.alt='';e.style.cssText='width:44px;height:44px;flex:none';f.prepend(e)}
+    if(f){var e=document.createElement('img');e.className='pv-hlogo';e.src='/preview-assets/proposal-horizontal-logo-on-dark.svg';e.alt='The Cement People';f.prepend(e)}
+    // Enquire: one button, two choices
+    var waSrc=document.querySelector('.hin .wa'),callSrc=document.querySelector('.htx .btn2');
+    var waIcon=waSrc?waSrc.querySelector('svg').outerHTML:'',callIcon=callSrc?callSrc.querySelector('svg').outerHTML:'';
+    var menu=document.createElement('div');menu.id='pv-menu';menu.setAttribute('role','menu');
+    menu.innerHTML='<span class="grab"></span><a role="menuitem" data-pv="wa" target="_blank" rel="noopener">'+waIcon+'<span>Chat on WhatsApp<small>Send us a message</small></span></a>'+
+      '<a role="menuitem" href="tel:+233558463468">'+callIcon+'<span>Call 055 846 3468<small>Mon–Sat, 7:00 am–5:00 pm</small></span></a>';
+    var scrim=document.createElement('div');scrim.id='pv-scrim';
+    document.body.append(menu,scrim);
+    var cur=null;
+    function close(){if(!cur)return;menu.classList.remove('open');cur.setAttribute('aria-expanded','false');cur=null}
+    function open(btn){if(cur===btn){close();return}close();cur=btn;btn.setAttribute('aria-expanded','true');
+      menu.querySelector('[data-pv=wa]').href=(waSrc&&waSrc.href)||'#contact';
+      var r=btn.getBoundingClientRect();menu.classList.add('open');var mw=menu.offsetWidth;
+      menu.style.top=(r.bottom+6)+'px';menu.style.left=Math.max(8,Math.min(window.innerWidth-mw-8,r.right-mw))+'px';
+      if(btn.classList.contains('s')||btn.classList.contains('big'))menu.style.left=Math.max(8,Math.min(window.innerWidth-mw-8,r.left))+'px';
+      menu.querySelector('a').focus({preventScroll:true})}
+    function make(cls,label){var b=document.createElement('button');b.type='button';b.className='pv-enq '+cls;b.setAttribute('aria-haspopup','menu');b.setAttribute('aria-expanded','false');
+      b.innerHTML=label+CHEV;b.addEventListener('click',function(e){e.stopPropagation();open(b)});return b}
+    if(waSrc)waSrc.after(make('p','Enquire'));
+    if(callSrc)callSrc.after(make('s','Enquire'));
+    var big=document.querySelector('#contact .wa.big');if(big)big.after(make('p big','Enquire'));
+    document.addEventListener('click',function(e){if(cur&&!menu.contains(e.target))close()});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&cur){var b=cur;close();b.focus()}});
+    window.addEventListener('resize',close);window.addEventListener('scroll',function(){if(cur&&window.innerWidth>=600)close()},{passive:true});
   });
 })();
 </script>
