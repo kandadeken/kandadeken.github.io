@@ -142,148 +142,228 @@ html[data-k="25"] body{background-image:url(/preview-assets/concrete-neutral-25.
   });
 })();
 </script>
-<!-- PREVIEW ONLY (16 Nov 2026): proposed estimate section. Switch "Estimate: Current / Proposed" in the preview bar. -->
+<!-- PREVIEW ONLY (16 Nov 2026): proposed estimate section, refinement 2. Switch "Estimate: Current / Proposed" in the preview bar. -->
 <style id="pv-est">
-/* ---------- Proposed estimate (html[data-e=new]) ---------- */
 html[data-e=new] #est{display:flex;flex-direction:column;background:var(--card)}
-html[data-e=new] .dh{background:var(--ink);color:#fff;border:0;padding:14px 16px}
-html[data-e=new] .dh b{font-size:var(--t-sub);letter-spacing:.01em}
+html[data-e=new] .dh{background:var(--ink);color:#fff;border:0;padding:14px 16px 4px}
+html[data-e=new] .dh b{font-size:var(--t-sub)}
 html[data-e=new] .dh span{color:#cfcac0}
-html[data-e=new] .dm{background:var(--ink);color:#cfcac0;border:0;padding:0 16px 12px;margin-top:-6px}
+html[data-e=new] .dm{background:var(--ink);color:#cfcac0;border:0;padding:0 16px 12px}
 html[data-e=new] .pv-scroll{padding:0 16px}
-html[data-e=new] #pv-sum{display:flex;flex-wrap:wrap;gap:6px;padding:12px 0 4px}
-html[data-e=new] #pv-sum:empty{display:none}
-html[data-e=new] #pv-sum span{font-size:var(--t-label);font-weight:var(--w-label);background:var(--pg);border:1px solid var(--line);border-radius:999px;padding:4px 10px;white-space:nowrap}
+/* At a glance */
+html[data-e=new] #pv-glance{padding:14px 0 6px}
+html[data-e=new] #pv-glance h4,html[data-e=new] .pv-cap{margin:0 0 8px;font-size:var(--t-label);font-weight:var(--w-strong);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+html[data-e=new] #pv-glance .t{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+html[data-e=new] #pv-glance .t div{background:var(--pg);border-radius:var(--r-control);padding:7px 10px;line-height:1.25}
+html[data-e=new] #pv-glance .t b{font-size:18px;font-weight:var(--w-strong);margin-right:5px}
+html[data-e=new] #pv-glance .t span{font-size:var(--t-small);color:var(--mute)}
+html[data-e=new] .pv-tools{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:6px 0 2px;min-height:var(--tap)}
+html[data-e=new] .pv-tools button{display:inline-flex;align-items:center;gap:6px;min-height:var(--tap);padding:0 2px;background:none;border:0;color:var(--ink);font:var(--w-label) var(--t-small)/1 var(--font);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+html[data-e=new] .pv-tools button svg{width:18px;height:18px;flex:none}
+html[data-e=new] .pv-tools .pv-clr{margin-left:auto;color:var(--mute)}
+html[data-e=new] .pv-confirm{display:none;align-items:center;gap:8px;flex-wrap:wrap;background:var(--pg);border-radius:var(--r-control);padding:10px 12px;margin:4px 0 6px;font-size:var(--t-small)}
+html[data-e=new] .pv-confirm.on{display:flex}
+html[data-e=new] .pv-confirm b{margin-right:auto}
+html[data-e=new] .pv-confirm button{min-height:40px;padding:0 14px;border-radius:var(--r-control);border:1px solid var(--ink);background:#fff;font:var(--w-label) var(--t-small)/1 var(--font);cursor:pointer}
+html[data-e=new] .pv-confirm .yes{background:var(--ink);color:#fff}
+/* Sections */
 html[data-e=new] #lines{padding:0}
-html[data-e=new] .pv-g{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:14px 0 0;padding:0 0 6px;border-bottom:2px solid var(--ink);font-size:var(--t-label);font-weight:var(--w-strong);letter-spacing:.06em;text-transform:uppercase}
-html[data-e=new] .pv-g span{letter-spacing:0;text-transform:none;font-weight:var(--w-label);color:var(--mute);white-space:nowrap}
-html[data-e=new] .ln{padding:10px 0;gap:4px 10px}
-html[data-e=new] .ln .nm{font-weight:var(--w-label);line-height:1.3}
+html[data-e=new] .pv-sec{border:1px solid var(--line);border-radius:var(--r-panel);margin:12px 0;overflow:hidden}
+html[data-e=new] .pv-sh{display:flex;align-items:center;gap:10px;width:100%;background:var(--pg);border:0;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;font:inherit;color:var(--ink);cursor:pointer}
+html[data-e=new] .pv-sh .no{font-size:var(--t-label);font-weight:var(--w-strong);color:var(--mute)}
+html[data-e=new] .pv-sh .nmx{font-weight:var(--w-strong);font-size:var(--t-body)}
+html[data-e=new] .pv-sh .qx{margin-left:auto;font-size:var(--t-small);color:var(--mute);white-space:nowrap}
+html[data-e=new] .pv-sh svg{width:16px;height:16px;flex:none;transition:transform .15s}
+html[data-e=new] .pv-sec.shut .pv-sh svg{transform:rotate(-90deg)}
+html[data-e=new] .pv-sec.shut .pv-body{display:none}
+html[data-e=new] .pv-body{padding:0 12px}
+html[data-e=new] .pv-sub{display:flex;justify-content:space-between;gap:10px;margin:12px 0 0;padding-bottom:4px;border-bottom:1px solid var(--line);font-size:var(--t-label);font-weight:var(--w-strong);letter-spacing:.06em;text-transform:uppercase}
+html[data-e=new] .pv-sub span{letter-spacing:0;text-transform:none;font-weight:var(--w-label);color:var(--mute)}
+html[data-e=new] .pv-st{display:flex;justify-content:space-between;gap:10px;padding:10px 0;font-size:var(--t-small);font-weight:var(--w-label)}
+html[data-e=new] .pv-st b{font-weight:var(--w-strong)}
+html[data-e=new] .pv-st.all{border-top:2px solid var(--ink);margin-top:2px;font-size:var(--t-body)}
+html[data-e=new] .ln{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;padding:10px 0;border-bottom:1px solid var(--line)}
+html[data-e=new] .ln:last-of-type{border-bottom:0}
+html[data-e=new] .ln .nm{grid-column:1;grid-row:1;font-weight:var(--w-label);line-height:1.3}
 html[data-e=new] .ln .nm small{display:block;font-weight:var(--w-text);color:var(--mute);font-size:var(--t-small)}
-html[data-e=new] .ln .amt{font-size:var(--t-body)}
-html[data-e=new] .empty{padding:20px 0 6px}
-html[data-e=new] .pv-deliv{margin:16px 0 0;padding:14px;background:var(--pg);border-radius:var(--r-control)}
+html[data-e=new] .ln .amt{grid-column:2;grid-row:1;align-self:start;font-size:var(--t-body)}
+html[data-e=new] .ln .qty{grid-column:1/-1;grid-row:2}
+html[data-e=new] .empty{padding:18px 0 6px}
+html[data-e=new] .pv-start{background:var(--pg);border-radius:var(--r-panel);padding:14px 16px;margin:14px 0 4px}
+html[data-e=new] .pv-start b{display:block;margin-bottom:6px}
+html[data-e=new] .pv-start ol{margin:0;padding-left:20px;font-size:var(--t-small);color:var(--mute)}
+html[data-e=new] .pv-start li{margin-bottom:3px}
+/* Delivery and small print */
+html[data-e=new] .pv-deliv{margin:12px 0 0;padding:14px;background:var(--pg);border-radius:var(--r-control)}
 html[data-e=new] .pv-deliv h4{margin:0 0 2px;font-size:var(--t-body);font-weight:var(--w-strong)}
 html[data-e=new] .pv-deliv p{margin:0 0 8px;font-size:var(--t-small);color:var(--mute)}
 html[data-e=new] .pv-deliv .dl{padding:0;font-size:var(--t-small)}
 html[data-e=new] .pv-deliv #loc{background:#fff}
-html[data-e=new] .pv-fineblock{padding:14px 0 16px}
-html[data-e=new] .pv-fineblock .fine{padding:0 0 8px}
-html[data-e=new] .pv-fineblock #clear{padding:6px 0;min-height:var(--tap)}
+html[data-e=new] .pv-scroll>.fine{padding:12px 0 16px}
+html[data-e=new] #clear{display:none}
+/* Pinned footer */
 html[data-e=new] .pv-foot{background:var(--card);border-top:1px solid var(--line);box-shadow:0 -8px 18px rgba(0,0,0,.05);padding:10px 16px 14px}
 html[data-e=new] .pv-foot .tot{padding:0}
-html[data-e=new] .pv-foot .tot div{padding:3px 0;font-size:var(--t-small)}
-html[data-e=new] .pv-foot .tot .gt{font-size:var(--t-sub);margin-top:6px;padding-top:8px}
-html[data-e=new] .pv-foot .tot .pv-tbc{color:var(--mute);font-style:normal}
-html[data-e=new] .pv-foot .acts{display:grid;grid-template-columns:1fr auto;gap:8px;padding:10px 0 0}
-html[data-e=new] .pv-foot .acts .cta{padding:12px;font-size:var(--t-body);min-height:48px}
-html[data-e=new] #print{display:inline-flex;align-items:center;gap:6px;min-height:48px;padding:0 14px;border:1px solid var(--ink);border-radius:var(--r-control);background:#fff;color:var(--ink);text-decoration:none;font-size:var(--t-small);font-weight:var(--w-label);cursor:pointer}
+html[data-e=new] .pv-foot .tot div{padding:2px 0;font-size:var(--t-small)}
+html[data-e=new] .pv-foot .tot .pv-hide{display:none}
+html[data-e=new] .pv-foot .tot .pv-tbc{color:var(--mute)}
+html[data-e=new] .pv-foot .tot .gt{font-size:var(--t-sub);margin-top:4px;padding-top:8px}
+html[data-e=new] .pv-foot .acts{display:grid;gap:6px;padding:10px 0 0}
+html[data-e=new] .pv-foot .acts .cta{min-height:48px;font-size:var(--t-body)}
+html[data-e=new] #print{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border:1px solid var(--ink);border-radius:var(--r-control);background:#fff;color:var(--ink);text-decoration:none;font:var(--w-label) var(--t-small)/1 var(--font);cursor:pointer}
 html[data-e=new] #print svg{width:18px;height:18px}
 html[data-e=new] #print:disabled{opacity:.4;cursor:default}
 html[data-e=new] #send.off{opacity:.4}
-/* Price list: rows already in the estimate get a faint ochre wash */
-html[data-e=new] .row:has(.step){background:color-mix(in srgb,var(--y) 9%,transparent);border-radius:var(--r-control)}
+/* Full view (computer) */
+html[data-e=new] .pv-tools .pv-full-btn{display:none}
+#pv-fscrim{position:fixed;inset:0;background:rgba(19,21,20,.45);z-index:39;display:none}
 @media (min-width:900px){
   html[data-e=new] .docket{max-height:calc(100vh - 132px);top:calc(env(safe-area-inset-top,0px) + 108px)}
   html[data-e=new] .pv-scroll{flex:1 1 auto;min-height:0;overflow:auto;overscroll-behavior:contain}
+  html[data-e=new] .pv-tools .pv-full-btn{display:inline-flex}
+  html[data-e=new] #est.pv-full{position:fixed;top:4vh;left:50%;transform:translateX(-50%);width:min(860px,94vw);max-height:92vh;z-index:40;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+  html[data-e=new] #est.pv-full~#pv-fscrim,html.pv-fullon #pv-fscrim{display:block}
+  html[data-e=new] #est.pv-full .ln{grid-template-columns:minmax(0,1fr) auto 140px;align-items:center}
+  html[data-e=new] #est.pv-full .ln .qty{grid-column:2;grid-row:1}
+  html[data-e=new] #est.pv-full .ln .amt{grid-column:3;align-self:center;text-align:right}
+  html[data-e=new] #est.pv-full #pv-glance .t{grid-template-columns:repeat(4,1fr)}
+  html[data-e=new] #est.pv-full #pv-glance .t b{display:block;font-size:24px}
+  html[data-e=new] #est.pv-full #pv-glance .t div{padding:10px 12px}
+  html[data-e=new] #est.pv-full .pv-foot .acts{grid-template-columns:1fr 260px}
 }
 @media (max-width:899px){
   html[data-e=new] #est.open{display:flex;flex-direction:column;overflow:hidden;height:100dvh;padding-bottom:0}
   html[data-e=new] #est.open .pv-scroll{flex:1 1 auto;min-height:0;overflow:auto;overscroll-behavior:contain}
   html[data-e=new] #est.open .pv-foot{padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
   html[data-e=new] #est.open .dclose{position:static}
-  html[data-e=new] #est.open .dh{padding:10px 16px}html[data-e=new] #est.open .dm{padding-bottom:10px}
-  /* phone bar: item count above the amount, one line each */
   html[data-e=new] .bar b{display:flex;flex-direction:column;line-height:1.15;font-weight:var(--w-strong);font-size:var(--t-sub)}
   html[data-e=new] .bar b small{font-size:var(--t-label);font-weight:var(--w-label);color:#cfcac0}
   html[data-e=new] .bar button{white-space:nowrap;padding:12px 18px;font-size:var(--t-body)}
 }
-/* Proposed quotation (print): V1.1 logo, ochre rule, units in the quantity column */
+/* Price list: selected products */
+html[data-e=new] .row:has(.step){background:color-mix(in srgb,var(--y) 10%,transparent);box-shadow:inset 4px 0 0 var(--y);border-radius:var(--r-control);padding-left:10px}
+html[data-e=new] .row:has(.step) .nm::before{content:"✓ In your estimate";display:block;font-size:12px;font-weight:var(--w-strong);letter-spacing:.02em;color:var(--ink);margin-bottom:2px}
+/* Quotation (print) */
 @media print{
   html[data-e=new] .q-head{border-bottom-color:#131514!important}
   html[data-e=new] .q-brand svg{display:none!important}
   html[data-e=new] .q-brand img{height:15mm;width:auto;display:block}
   html[data-e=new] .q-brand>div>b{display:none}
   html[data-e=new] .q-sum .gt{background:#FF9802!important;color:#131514}
-  html[data-e=new] #quote .pv-gr td{background:#F4F4F4;font-weight:700;font-size:7.5pt;letter-spacing:.08em;text-transform:uppercase;padding:1.6mm 2.5mm}
+  html[data-e=new] #quote tr.pv-gr td{background:#F4F4F4;font-weight:700;font-size:7.5pt;letter-spacing:.08em;text-transform:uppercase;padding:1.8mm 2.5mm;border-bottom:.25mm solid #131514}
+  html[data-e=new] #quote tr.pv-qs td{font-weight:700;border-bottom:.4mm solid #131514}
 }
 </style>
 <script>
 (function(){
   var h=document.documentElement,q=new URLSearchParams(location.search);
   h.dataset.e=q.get('e')==='current'?'current':'new';
+  var CHEV='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
+  var BIN='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var EXP='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var DL='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   document.addEventListener('DOMContentLoaded',function(){
-    // switch in the preview bar
     var bar=document.getElementById('tcp-pv');
     if(bar){var s=document.createElement('span');s.innerHTML='Estimate: <button data-k="e" data-v="current">Current</button><button data-k="e" data-v="new">Proposed</button>';bar.append(s);
       s.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',h.dataset.e===b.dataset.v);b.addEventListener('click',function(){var u=new URL(location.href);u.searchParams.set('e',b.dataset.v);location.href=u.href})})}
     if(h.dataset.e!=='new')return;
-    var est=document.getElementById('est'),lines=document.getElementById('lines'),tot=document.getElementById('tot'),acts=est.querySelector('.acts'),dl=est.querySelector('.dl'),fine=est.querySelector('.fine'),clear=document.getElementById('clear'),pr=document.getElementById('print');
-    // Build: header | scroll (summary, grouped lines, delivery, small print, clear) | pinned footer (totals, actions)
+    var est=document.getElementById('est'),lines=document.getElementById('lines'),tot=document.getElementById('tot'),acts=est.querySelector('.acts'),dl=est.querySelector('.dl'),fine=est.querySelector('.fine'),clear=document.getElementById('clear'),pr=document.getElementById('print'),send=document.getElementById('send');
+    est.querySelector('.dh b').textContent='Your estimate';
     var sc=document.createElement('div');sc.className='pv-scroll';
-    var sum=document.createElement('div');sum.id='pv-sum';
+    var gl=document.createElement('div');gl.id='pv-glance';
+    var tools=document.createElement('div');tools.className='pv-tools';
+    tools.innerHTML='<button type="button" class="pv-full-btn">'+EXP+'View full estimate</button><button type="button" class="pv-clr">'+BIN+'Clear estimate</button>';
+    var cf=document.createElement('div');cf.className='pv-confirm';cf.setAttribute('role','alertdialog');
+    cf.innerHTML='<b>Remove all items from this estimate?</b><button type="button" class="no">Keep</button><button type="button" class="yes">Clear all</button>';
+    var start=document.createElement('div');start.className='pv-start';
+    start.innerHTML='<b>How to build your estimate</b><ol><li>Choose a tab in the price list: Cement, Iron rods or Binding wire.</li><li>Tap <b style="display:inline">Add</b> on each product you need.</li><li>Set the quantity with − and + or type it. Your total updates as you go.</li></ol>';
     var dv=document.createElement('section');dv.className='pv-deliv';dv.innerHTML='<h4>Delivery</h4><p>Not included in the total. We confirm the delivery cost for your order and location after you send this estimate.</p>';
-    var fb=document.createElement('div');fb.className='pv-fineblock';
     var ft=document.createElement('div');ft.className='pv-foot';
-    est.querySelector('.dm').after(sc);sc.append(sum,lines,dv,fb);dv.append(dl);fb.append(fine,clear);
+    est.querySelector('.dm').after(sc);sc.append(gl,tools,cf,start,lines,dv,fine);dv.append(dl);
     sc.after(ft);ft.append(tot,acts);
-    pr.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>PDF';
-    pr.setAttribute('aria-label','Print or save this estimate as a PDF');
-    var sd=document.getElementById('send');[].slice.call(sd.childNodes).forEach(function(n){if(n.nodeType===3&&/WhatsApp/.test(n.textContent))n.textContent='Send on WhatsApp'});
-    var send=document.getElementById('send');
-    var G=function(id,ln){if(id[0]==='c')return 'Cement';if(id[0]==='j')return 'Iron rods, by the ton';if(/per roll/.test(ln.textContent))return 'Binding wire';return 'Iron rods, single pieces'};
-    var ORDER=['Cement','Iron rods, single pieces','Iron rods, by the ton','Binding wire'];
+    pr.innerHTML=DL+'Print or save as PDF';
+    [].slice.call(send.childNodes).forEach(function(n){if(n.nodeType===3&&/WhatsApp/.test(n.textContent))n.textContent='Send on WhatsApp'});
+    // clear with confirmation (Undo stays)
+    tools.querySelector('.pv-clr').addEventListener('click',function(){cf.classList.add('on');cf.querySelector('.no').focus()});
+    cf.querySelector('.no').addEventListener('click',function(){cf.classList.remove('on')});
+    cf.querySelector('.yes').addEventListener('click',function(){cf.classList.remove('on');clear.click()});
+    // full view on computers
+    var fs=document.createElement('div');fs.id='pv-fscrim';document.body.append(fs);
+    var fb=tools.querySelector('.pv-full-btn');
+    function full(on){est.classList.toggle('pv-full',on);h.classList.toggle('pv-fullon',on);fb.innerHTML=on?EXP+'Back to the price list':EXP+'View full estimate';document.body.style.overflow=on?'hidden':''}
+    fb.addEventListener('click',function(){full(!est.classList.contains('pv-full'))});
+    fs.addEventListener('click',function(){full(false)});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&est.classList.contains('pv-full'))full(false)});
+    // grouping
+    var SEC=[{k:'cem',no:'01',name:'Cement',subs:[{k:'cem'}]},{k:'rod',no:'02',name:'Iron rods',subs:[{k:'pc',name:'Single pieces'},{k:'ton',name:'By the ton'}]},{k:'wire',no:'03',name:'Binding wire',subs:[{k:'wire'}]}];
+    var kind=function(id,ln){if(id[0]==='c')return 'cem';if(id[0]==='j')return 'ton';if(/per roll/.test(ln.textContent))return 'wire';return 'pc'};
     var num=function(t){return parseFloat(String(t).replace(/[^0-9.]/g,''))||0};
     var fmt=function(n){return 'GH₵'+n.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2})};
-    var busy=false;
-    var lo,to;
+    var U={cem:['bag','bags'],pc:['rod','rods'],ton:['ton','tons'],wire:['roll','rolls']};
+    var qtxt=function(k,n){return n+' '+U[k][n===1?0:1]};
+    var shut={};var lo,busy=false;
     function shape(){
       if(busy)return;busy=true;if(lo)lo.disconnect();
-      lines.querySelectorAll('.pv-g').forEach(function(x){x.remove()});
       var L=[].slice.call(lines.querySelectorAll('.ln'));
-      var groups={},units={bags:0,rods:0,tons:0,rolls:0};
-      L.forEach(function(ln){var inp=ln.querySelector('input[data-qty]');var id=inp?inp.dataset.qty:'';var g=G(id,ln);(groups[g]=groups[g]||[]).push(ln);
-        var n=inp?num(inp.value):0,t=ln.querySelector('small').textContent;
-        if(/bag/.test(t))units.bags+=n;else if(/ton/.test(t))units.tons+=n;else if(/roll/.test(t))units.rolls+=n;else units.rods+=n});
+      var by={cem:[],pc:[],ton:[],wire:[]},qn={cem:0,pc:0,ton:0,wire:0},am={cem:0,pc:0,ton:0,wire:0};
+      L.forEach(function(ln){var inp=ln.querySelector('input[data-qty]');var k=kind(inp?inp.dataset.qty:'',ln);by[k].push(ln);
+        var n=inp?num(inp.value):0;qn[k]+=n;am[k]+=num(ln.querySelector('.amt').textContent);
+        var qd=ln.querySelector('.qty');if(qd&&!qd.querySelector('.u')){var u=document.createElement('span');u.className='u';u.textContent=U[k][n===1?0:1];qd.append(u)}});
+      [].slice.call(lines.children).forEach(function(c){if(!c.classList.contains('ln'))c.classList.contains('empty')||c.remove()});
       if(L.length){
-        ORDER.forEach(function(g){if(!groups[g])return;var hd=document.createElement('h4');hd.className='pv-g';
-          var st=groups[g].reduce(function(s,ln){return s+num(ln.querySelector('.amt').textContent)},0);
-          hd.innerHTML=g+'<span>'+fmt(st)+'</span>';lines.append(hd);groups[g].forEach(function(ln){lines.append(ln)})});
+        SEC.forEach(function(S){var has=S.subs.some(function(x){return by[x.k].length});if(!has)return;
+          var box=document.createElement('section');box.className='pv-sec'+(shut[S.k]?' shut':'');
+          var q=S.subs.filter(function(x){return by[x.k].length}).map(function(x){return qtxt(x.k,qn[x.k])}).join(' · ');
+          var sub=S.subs.reduce(function(s,x){return s+am[x.k]},0);
+          box.innerHTML='<button type="button" class="pv-sh" aria-expanded="'+!shut[S.k]+'">'+CHEV+'<span class="no">'+S.no+'</span><span class="nmx">'+S.name+'</span><span class="qx">'+q+'</span></button><div class="pv-body"></div>';
+          var body=box.querySelector('.pv-body');
+          S.subs.forEach(function(x){if(!by[x.k].length)return;
+            if(x.name){var hd=document.createElement('div');hd.className='pv-sub';hd.innerHTML=x.name+'<span>'+qtxt(x.k,qn[x.k])+'</span>';body.append(hd)}
+            by[x.k].forEach(function(ln){body.append(ln)});
+            if(x.name){var st=document.createElement('div');st.className='pv-st';st.innerHTML='<span>'+x.name+' subtotal</span><b>'+fmt(am[x.k])+'</b>';body.append(st)}});
+          var all=document.createElement('div');all.className='pv-st all';all.innerHTML='<span>'+S.name+' subtotal</span><b>'+fmt(sub)+'</b>';body.append(all);
+          box.querySelector('.pv-sh').addEventListener('click',function(){shut[S.k]=!shut[S.k];box.classList.toggle('shut',shut[S.k]);this.setAttribute('aria-expanded',!shut[S.k])});
+          lines.append(box)});
       }
-      var chips=[];
-      if(units.bags)chips.push(units.bags+(units.bags===1?' bag':' bags')+' of cement');
-      if(units.rods)chips.push(units.rods+(units.rods===1?' rod':' rods'));
-      if(units.tons)chips.push(units.tons+(units.tons===1?' ton':' tons')+' of rods');
-      if(units.rolls)chips.push(units.rolls+(units.rolls===1?' roll':' rolls')+' of binding wire');
-      sum.innerHTML=chips.map(function(c){return '<span>'+c+'</span>'}).join('');
-      // totals: say plainly that delivery is not yet priced
+      var tiles=[];
+      if(qn.cem)tiles.push([qn.cem,qn.cem===1?'bag of cement':'bags of cement']);
+      if(qn.pc)tiles.push([qn.pc,qn.pc===1?'individual rod':'individual rods']);
+      if(qn.ton)tiles.push([qn.ton,qn.ton===1?'ton of rods':'tons of rods']);
+      if(qn.wire)tiles.push([qn.wire,qn.wire===1?'roll of binding wire':'rolls of binding wire']);
+      gl.innerHTML=tiles.length?'<h4>Your order at a glance</h4><div class="t">'+tiles.map(function(t){return '<div><b>'+t[0]+'</b><span>'+t[1]+'</span></div>'}).join('')+'</div>':'';
+      start.style.display=L.length?'none':'';
+      tools.style.display=L.length?'':'none';if(!L.length)cf.classList.remove('on');
       tot.querySelectorAll('div').forEach(function(d){var a=d.children[0],b=d.children[1];if(!a||!b)return;
-        if(a.textContent==='Materials')a.textContent='Materials ('+L.length+(L.length===1?' item':' items')+')';
+        if(a.textContent==='Materials')d.classList.add('pv-hide');
         if(a.textContent==='Delivery'){b.textContent='To be confirmed';b.className='pv-tbc'}});
       pr.disabled=!L.length;
       if(lo)lo.observe(lines,{childList:true});busy=false;
     }
     lo=new MutationObserver(shape);lo.observe(lines,{childList:true});
-    to=new MutationObserver(function(){if(!busy)shape()});to.observe(tot,{childList:true});
+    new MutationObserver(function(){if(!busy)shape()}).observe(tot,{childList:true});
     shape();
-    // phone bar: "8 items" over the amount
     var bt=document.getElementById('barTxt');
     function barTxt(){var m=/Estimate: (.+) \((\d+ items?)\)/.exec(bt.textContent);if(!m)return;bt.innerHTML='<small>'+m[2]+' in your estimate</small>'+m[1]}
     new MutationObserver(function(){if(!bt.querySelector('small'))barTxt()}).observe(bt,{childList:true,characterData:true,subtree:true});barTxt();
-    // quotation: V1.1 logo, units in the Qty column, group rows
+    // Quotation: logo, units, sections with subtotals, delivery "To be confirmed"
     var Q=document.getElementById('quote'),qbusy=false,qo;
+    var GN={cem:'Cement',pc:'Iron rods, single pieces',ton:'Iron rods, by the ton',wire:'Binding wire'};
     function quote(){if(qbusy)return;qbusy=true;if(qo)qo.disconnect();
       var b=Q.querySelector('.q-brand');if(b&&!b.querySelector('img')){var i=document.createElement('img');i.src='/preview-assets/tcp-logo-primary-on-light.svg';i.alt='The Cement People';b.prepend(i)}
-      Q.querySelectorAll('tbody tr').forEach(function(tr){var d=tr.children[1],qc=tr.children[2];if(!d||!qc||tr.dataset.pv)return;tr.dataset.pv=1;
-        var t=d.querySelector('small')?d.querySelector('small').textContent:'',n=num(qc.textContent);
-        var u=/bag/.test(t)?(n===1?'bag':'bags'):/ton/.test(t)?(n===1?'ton':'tons'):/roll/.test(t)?(n===1?'roll':'rolls'):/rod/.test(t)?(n===1?'pc':'pcs'):'';
-        if(u)qc.textContent=qc.textContent+' '+u;
-        if(/per roll/.test(t))d.querySelector('small').textContent='Binding wire, per roll'});
+      var tb=Q.querySelector('tbody');
+      if(tb&&!tb.dataset.pv&&!tb.querySelector('.q-empty')){tb.dataset.pv=1;var rows=[].slice.call(tb.querySelectorAll('tr'));var grp={cem:[],pc:[],ton:[],wire:[]},sum={cem:0,pc:0,ton:0,wire:0};
+        rows.forEach(function(tr){var d=tr.children[1],qc=tr.children[2];var t=d.querySelector('small')?d.querySelector('small').textContent:'';var n=num(qc.textContent);
+          var k=/^Cement/.test(t)?'cem':/Per Ton/.test(t)?'ton':/roll/.test(t)?'wire':'pc';
+          qc.textContent=qc.textContent+' '+U[k][n===1?0:1];grp[k].push(tr);sum[k]+=num(tr.children[4].textContent)});
+        ['cem','pc','ton','wire'].forEach(function(k){if(!grp[k].length)return;var g=document.createElement('tr');g.className='pv-gr';g.innerHTML='<td colspan="5">'+GN[k]+'</td>';tb.append(g);grp[k].forEach(function(tr){tb.append(tr)});
+          var s=document.createElement('tr');s.className='pv-qs';s.innerHTML='<td></td><td colspan="3">'+GN[k]+' subtotal</td><td class="r">'+fmt(sum[k])+'</td>';tb.append(s)})}
+      Q.querySelectorAll('.q-sum div, .q-to div').forEach(function(d){var a=d.children[0],v=d.children[1];if(!a||!v)return;if(/^Delivery$/.test(a.textContent.trim())&&/Quoted/.test(v.textContent))v.textContent=/separately$/.test(v.textContent)?'To be confirmed':'To be confirmed after you send this estimate'});
       if(qo)qo.observe(Q,{childList:true,subtree:true});qbusy=false}
     qo=new MutationObserver(quote);qo.observe(Q,{childList:true,subtree:true});quote();
   });
 })();
 </script>
+
 </head>
 <body>
 
@@ -343,7 +423,8 @@ html[data-e=new] .row:has(.step){background:color-mix(in srgb,var(--y) 9%,transp
 <section id="quote" aria-hidden="true"></section>
 
 
-<script type="application/json" id="tcp-data">{"currency":"GH₵","taxRate":0,"business":{"phone":"055 846 3468","whatsapp":"233558463468","town":"Kasoa, Ghana","website":"thecementpeople.com"},"products":[{"id":"c1","cat":"Cement","name":"Supacem 32.5R","unit":"50 kg bag","price":75,"img":"/images/products/supacem-32-5.webp","alt":"Supacem Supa Fast 32.5R bag, green and kraft brown"},{"id":"c2","cat":"Cement","name":"Supacem 42.5R","unit":"50 kg bag","price":100,"img":"/images/products/supacem-42-5.webp","alt":"Supacem Supa Power 42.5R bag, kraft brown with black panel"},{"id":"c3","cat":"Cement","name":"Dzata 42.5R","unit":"50 kg bag","price":110,"img":"/images/products/dzata-42-5.webp","alt":"Dzata 42.5R bag, kraft brown with black and white lion panel"},{"id":"c4","cat":"Cement","name":"Ghacem Waterproof 42.5N","unit":"50 kg bag","price":120,"img":"/images/products/ghacem-waterproof-42-5.webp","alt":"Ghacem Super Strong Waterproof 42.5N bag, black and yellow panel with blue waves"},{"id":"i1","cat":"Iron Rods (Single Piece)","name":"Iron rod 16 mm","unit":"30 ft rod","price":102,"size":"16 mm"},{"id":"i2","cat":"Iron Rods (Single Piece)","name":"Iron rod 14 mm","unit":"30 ft rod","price":75,"size":"14 mm"},{"id":"i3","cat":"Iron Rods (Single Piece)","name":"Iron rod 12 mm","unit":"30 ft rod","price":58,"size":"12 mm"},{"id":"i4","cat":"Iron Rods (Single Piece)","name":"Iron rod 11.5 mm","unit":"30 ft rod","price":48,"size":"11.5 mm"},{"id":"i5","cat":"Iron Rods (Single Piece)","name":"Iron rod 10 mm","unit":"30 ft rod","price":40,"size":"10 mm"},{"id":"i6","cat":"Iron Rods (Single Piece)","name":"Iron rod 8 mm","unit":"30 ft rod","price":25,"size":"8 mm"},{"id":"j1","cat":"Iron Rods (Per Ton)","name":"Iron rod 16 mm","unit":"ton","price":7000,"size":"16 mm"},{"id":"j2","cat":"Iron Rods (Per Ton)","name":"Iron rod 14 mm","unit":"ton","price":7000,"size":"14 mm"},{"id":"j3","cat":"Iron Rods (Per Ton)","name":"Iron rod 12 mm","unit":"ton","price":7000,"size":"12 mm"},{"id":"j4","cat":"Iron Rods (Per Ton)","name":"Iron rod 11.5 mm","unit":"ton","price":7000,"size":"11.5 mm"},{"id":"j5","cat":"Iron Rods (Per Ton)","name":"Iron rod 10 mm","unit":"ton","price":7000,"size":"10 mm"},{"id":"j6","cat":"Iron Rods (Per Ton)","name":"Iron rod 8 mm","unit":"ton","price":7000,"size":"8 mm"},{"id":"i8","cat":"Iron Rods (Single Piece)","sub":"Binding wire","name":"Binding wire","unit":"roll","price":60,"img":"/images/products/binding-wire.webp","alt":"Coil of black annealed binding wire"}],"banners":{"rods":{"src":"/images/products/iron-rods-1086.webp","srcset":"/images/products/iron-rods-720.webp 720w, /images/products/iron-rods-1086.webp 1086w, /images/products/iron-rods-1440.webp 1440w","w":1086,"h":363}},"categoryInfo":{"Iron Rods (Single Piece)":{"banner":"rods","note":"Sold by the piece. Each rod is 30 ft long."},"Iron Rods (Per Ton)":{"banner":"rods","note":"Available in all listed sizes."}}}</script>
+<script type="application/json" id="tcp-data">{"currency":"GH₵","taxRate":0,"business":{"phone":"055 846 3468","whatsapp":"233558463468","town":"Kasoa, Ghana","website":"thecementpeople.com"},"products":[{"id":"c1","cat":"Cement","name":"Supacem 32.5R","unit":"50 kg bag","price":75,"img":"/images/products/supacem-32-5.webp","alt":"Supacem Supa Fast 32.5R bag, green and kraft brown"},{"id":"c2","cat":"Cement","name":"Supacem 42.5R","unit":"50 kg bag","price":100,"img":"/images/products/supacem-42-5.webp","alt":"Supacem Supa Power 42.5R bag, kraft brown with black panel"},{"id":"c3","cat":"Cement","name":"Dzata 42.5R","unit":"50 kg bag","price":110,"img":"/images/products/dzata-42-5.webp","alt":"Dzata 42.5R bag, kraft brown with black and white lion panel"},{"id":"c4","cat":"Cement","name":"Ghacem Waterproof 42.5N","unit":"50 kg bag","price":120,"img":"/images/products/ghacem-waterproof-42-5.webp","alt":"Ghacem Super Strong Waterproof 42.5N bag, black and yellow panel with blue waves"},{"id":"i1","cat":"Iron Rods (Single Piece)","name":"Iron rod 16 mm","unit":"30 ft rod","price":102,"size":"16 mm"},{"id":"i2","cat":"Iron Rods (Single Piece)","name":"Iron rod 14 mm","unit":"30 ft rod","price":75,"size":"14 mm"},{"id":"i3","cat":"Iron Rods (Single Piece)","name":"Iron rod 12 mm","unit":"30 ft rod","price":58,"size":"12 mm"},{"id":"i4","cat":"Iron Rods (Single Piece)","name":"Iron rod 11.5 mm","unit":"30 ft rod","price":48,"size":"11.5 mm"},{"id":"i5","cat":"Iron Rods (Single Piece)","name":"Iron rod 10 mm","unit":"30 ft rod","price":40,"size":"10 mm"},{"id":"i6","cat":"Iron Rods (Single Piece)","name":"Iron rod 8 mm","unit":"30 ft rod","price":25,"size":"8 mm"},{"id":"j1","cat":"Iron Rods (Per Ton)","name":"Iron rod 16 mm","unit":"ton","price":7000,"size":"16 mm"},{"id":"j2","cat":"Iron Rods (Per Ton)","name":"Iron rod 14 mm","unit":"ton","price":7000,"size":"14 mm"},{"id":"j3","cat":"Iron Rods (Per Ton)","name":"Iron rod 12 mm","unit":"ton","price":7000,"size":"12 mm"},{"id":"j4","cat":"Iron Rods (Per Ton)","name":"Iron rod 11.5 mm","unit":"ton","price":7000,"size":"11.5 mm"},{"id":"j5","cat":"Iron Rods (Per Ton)","name":"Iron rod 10 mm","unit":"ton","price":7000,"size":"10 mm"},{"id":"j6","cat":"Iron Rods (Per Ton)","name":"Iron rod 8 mm","unit":"ton","price":7000,"size":"8 mm"},{"id":"i8","cat":"Iron Rods (Single Piece)","sub":"Binding wire","name":"Binding wire","unit":"roll","price":60,"img":"/images/products/binding-wire.webp","alt":"Coil of black annealed binding wire"}],"banners":{"rods":{"src":"/images/products/iron-rods-1086.webp","srcset":"/images/products/iron-rods-720.webp 720w, /images/products/iron-rods-1086.webp 1086w, /images/products/iron-rods-1440.webp 1440w","w":1086,"h":363}},"categoryInfo":{"Iron Rods (Single Piece)":{"banner":"rods","note":"Sold by the piece. Each rod is 30 ft long."},"Iron Rods (Per Ton)":{"banner":"rods","note":"Available in all listed sizes."}}}</script><script>/* PREVIEW ONLY: in the proposed estimate, binding wire is its own category (fix at the source) */
+if(new URLSearchParams(location.search).get('e')!=='current'){var D=document.getElementById('tcp-data'),J=JSON.parse(D.textContent);J.products.forEach(function(p){if(p.id==='i8'){p.cat='Binding Wire';delete p.sub}});D.textContent=JSON.stringify(J)}</script>
 
 <script src="/scripts/quote-engine.js?v=5e05ea2596"></script>
 
