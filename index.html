@@ -253,6 +253,38 @@ html[data-e=new] .row:has(.step) .nm::before{content:"✓ In your estimate";disp
   html[data-e=new] #quote tr.pv-gr td{background:#F4F4F4;font-weight:700;font-size:7.5pt;letter-spacing:.08em;text-transform:uppercase;padding:1.8mm 2.5mm;border-bottom:.25mm solid #131514}
   html[data-e=new] #quote tr.pv-qs td{font-weight:700;border-bottom:.4mm solid #131514}
 }
+
+/* ---- refinement 3 ---- */
+html[data-e=new] .pv-tools{margin:0;padding:4px 16px;border-bottom:1px solid var(--line);background:var(--card);flex:none}
+html[data-e=new] .pv-confirm{margin:8px 16px;flex:none}
+html[data-e=new] .pv-sec{border:0;border-radius:var(--r-panel);margin:14px 0;box-shadow:0 0 0 1px var(--line)}
+html[data-e=new] .pv-sh{display:grid;grid-template-columns:16px auto minmax(0,1fr) auto;align-items:center;gap:10px;padding:12px;border-bottom:0}
+html[data-e=new] .pv-sh .no{background:var(--y);color:var(--ink);border-radius:4px;padding:2px 6px;font-size:12px}
+html[data-e=new] .pv-sh .nmw{display:flex;flex-direction:column;min-width:0;line-height:1.25}
+html[data-e=new] .pv-sh .nmx{font-size:var(--t-body);text-transform:uppercase;letter-spacing:.05em}
+html[data-e=new] .pv-sh .qx{margin:0;font-size:var(--t-small);color:var(--mute);white-space:normal}
+html[data-e=new] .pv-sh .sx{font-weight:var(--w-strong);font-size:var(--t-body);white-space:nowrap}
+/* alternating neutral tones per material section */
+html[data-e=new] .pv-sec:nth-of-type(odd) .pv-sh{background:#EAEAEA}
+html[data-e=new] .pv-sec:nth-of-type(odd) .pv-body{background:#FFFFFF}
+html[data-e=new] .pv-sec:nth-of-type(even) .pv-sh{background:#DFDFDF}
+html[data-e=new] .pv-sec:nth-of-type(even) .pv-body{background:#F6F6F6}
+html[data-e=new] .pv-sec:not(.shut) .pv-sh{border-bottom:1px solid var(--line)}
+/* product line: name / unit price / quantity + line total */
+html[data-e=new] .ln{grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:12px 0}
+html[data-e=new] .ln .nm{grid-column:1/-1;grid-row:1;font-size:var(--t-body)}
+html[data-e=new] .ln .nm small{margin-top:2px}
+html[data-e=new] .ln .qty{grid-column:1;grid-row:2;align-self:center}
+html[data-e=new] .ln .amt{grid-column:2;grid-row:2;align-self:center;font-size:var(--t-price);text-align:right}
+html[data-e=new] .ln .amt::before{content:"Line total";display:block;font-size:12px;font-weight:var(--w-text);color:var(--mute);line-height:1.2}
+@media (min-width:900px){html[data-e=new] #est.pv-full .ln .nm{grid-column:1;grid-row:1}html[data-e=new] #est.pv-full .ln .amt::before{display:none}}
+
+/* section heading stays at the top of the list while you scroll through that section */
+html[data-e=new] .pv-sec{overflow:visible}
+html[data-e=new] .pv-sh{position:sticky;top:0;z-index:2;border-radius:var(--r-panel) var(--r-panel) 0 0}
+html[data-e=new] .pv-sec.shut .pv-sh{border-radius:var(--r-panel)}
+html[data-e=new] .pv-body{border-radius:0 0 var(--r-panel) var(--r-panel)}
+@media (min-width:900px){html[data-e=new] #est.pv-full .ln .amt{grid-row:1}}
 </style>
 <script>
 (function(){
@@ -279,7 +311,7 @@ html[data-e=new] .row:has(.step) .nm::before{content:"✓ In your estimate";disp
     start.innerHTML='<b>How to build your estimate</b><ol><li>Choose a tab in the price list: Cement, Iron rods or Binding wire.</li><li>Tap <b style="display:inline">Add</b> on each product you need.</li><li>Set the quantity with − and + or type it. Your total updates as you go.</li></ol>';
     var dv=document.createElement('section');dv.className='pv-deliv';dv.innerHTML='<h4>Delivery</h4><p>Not included in the total. We confirm the delivery cost for your order and location after you send this estimate.</p>';
     var ft=document.createElement('div');ft.className='pv-foot';
-    est.querySelector('.dm').after(sc);sc.append(gl,tools,cf,start,lines,dv,fine);dv.append(dl);
+    est.querySelector('.dm').after(tools);tools.after(cf);cf.after(sc);sc.append(gl,start,lines,dv,fine);dv.append(dl);
     sc.after(ft);ft.append(tot,acts);
     pr.innerHTML=DL+'Print or save as PDF';
     [].slice.call(send.childNodes).forEach(function(n){if(n.nodeType===3&&/WhatsApp/.test(n.textContent))n.textContent='Send on WhatsApp'});
@@ -315,7 +347,7 @@ html[data-e=new] .row:has(.step) .nm::before{content:"✓ In your estimate";disp
           var box=document.createElement('section');box.className='pv-sec'+(shut[S.k]?' shut':'');
           var q=S.subs.filter(function(x){return by[x.k].length}).map(function(x){return qtxt(x.k,qn[x.k])}).join(' · ');
           var sub=S.subs.reduce(function(s,x){return s+am[x.k]},0);
-          box.innerHTML='<button type="button" class="pv-sh" aria-expanded="'+!shut[S.k]+'">'+CHEV+'<span class="no">'+S.no+'</span><span class="nmx">'+S.name+'</span><span class="qx">'+q+'</span></button><div class="pv-body"></div>';
+          box.innerHTML='<button type="button" class="pv-sh" aria-expanded="'+!shut[S.k]+'">'+CHEV+'<span class="no">'+S.no+'</span><span class="nmw"><span class="nmx">'+S.name+'</span><span class="qx">'+q+'</span></span><span class="sx">'+fmt(sub)+'</span></button><div class="pv-body"></div>';
           var body=box.querySelector('.pv-body');
           S.subs.forEach(function(x){if(!by[x.k].length)return;
             if(x.name){var hd=document.createElement('div');hd.className='pv-sub';hd.innerHTML=x.name+'<span>'+qtxt(x.k,qn[x.k])+'</span>';body.append(hd)}
