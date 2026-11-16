@@ -34,7 +34,66 @@
      files are fetched early so the headline and prices draw in the right font. -->
 <link rel="preload" href="/fonts/montserrat-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/montserrat-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/_astro/index.Cm9JrFxD.css"></head>
+<link rel="stylesheet" href="/_astro/index.Cm9JrFxD.css"><!-- PREVIEW ONLY (16 Nov 2026): material-language test. Added to this preview copy only; not in the website's code. -->
+<style id="tcp-preview">
+@font-face{font-family:JostPreview;font-weight:700;src:url(/preview-assets/jost-latin-700-normal.woff2) format("woff2")}
+/* New identity colours (preview approximation of step 1) */
+:root{--y:#D27D02;--y-soft:#F2DDBA;--ink:#131514}
+/* Colour temperature of the page */
+html[data-t=warm]{--pg:#F7F4EF;--tex:url(/preview-assets/concrete-warm.webp)}
+html[data-t=less]{--pg:#F6F4F2;--tex:url(/preview-assets/concrete-less-warm.webp)}
+html[data-t=neutral]{--pg:#F4F4F4;--tex:url(/preview-assets/concrete-neutral.webp)}
+:root{--bg:var(--pg)}
+/* Main page material: concrete, or flat for comparison */
+body{background-color:var(--pg)}
+html[data-s=concrete] body{background-image:var(--tex);background-size:512px 512px}
+.hero{background:transparent}
+.sec,.sec.alt{background:transparent}
+/* Functional surfaces stay flat: price list and estimate are smooth panels */
+#catalog{background:var(--pg);border-radius:var(--r-panel);box-shadow:0 0 0 20px var(--pg),0 0 0 21px var(--line)}
+.docket,.dh{background:var(--pg)}
+@media (max-width:899px){#catalog{border-radius:0;box-shadow:0 0 0 16px var(--pg)}
+  .hpic img{-webkit-mask-image:linear-gradient(180deg,transparent,#000 22%,#000 90%,transparent);mask-image:linear-gradient(180deg,transparent,#000 22%,#000 90%,transparent)}}
+/* V1.1 logo in place of the old brick mark */
+.brand svg,.brand span,.foot svg{display:none}
+.brand img{display:block}
+.brand .nm-line{font:700 16px/1 JostPreview,Montserrat,sans-serif;white-space:nowrap;letter-spacing:.01em}
+.foot{border-top-color:#D27D02}.bar{border-top-color:#D27D02}
+/* Phones under 430 px: the one-line name does not fit beside "Enquire" and the menu, so the WhatsApp button shows its icon only (preview finding) */
+@media (max-width:429px){.hin .wa span{display:none}.hin .wa{padding:10px 12px}}
+/* The preview switch */
+#tcp-pv{font:600 13px/1.3 Montserrat,system-ui,sans-serif;background:#131514;color:#fff;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;position:relative;z-index:20}
+#tcp-pv b{color:#D27D02;letter-spacing:.08em}
+#tcp-pv span{display:inline-flex;gap:4px;align-items:center}
+#tcp-pv button{font:inherit;min-height:32px;padding:4px 10px;border-radius:5px;border:1px solid #5d5a54;background:transparent;color:#fff;cursor:pointer}
+#tcp-pv button[aria-pressed=true]{background:#D27D02;border-color:#D27D02;color:#131514}
+</style>
+<script>
+(function(){
+  var q=new URLSearchParams(location.search),h=document.documentElement;
+  h.dataset.t=({warm:1,less:1,neutral:1})[q.get('t')]?q.get('t'):'less';
+  h.dataset.s=({flat:1,concrete:1})[q.get('s')]?q.get('s'):'concrete';
+  document.addEventListener('DOMContentLoaded',function(){
+    var bar=document.createElement('div');bar.id='tcp-pv';
+    bar.innerHTML='<b>PREVIEW</b><span>Colour: <button data-k="t" data-v="warm">Warm</button><button data-k="t" data-v="less">50% less warm</button><button data-k="t" data-v="neutral">Neutral</button></span><span>Page: <button data-k="s" data-v="concrete">Concrete</button><button data-k="s" data-v="flat">Flat</button></span>';
+    document.body.prepend(bar);
+    function sync(){bar.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',h.dataset[b.dataset.k]===b.dataset.v)})}
+    bar.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;h.dataset[b.dataset.k]=b.dataset.v;sync();
+      var u=new URL(location.href);u.searchParams.set('t',h.dataset.t);u.searchParams.set('s',h.dataset.s);history.replaceState(null,'',u)});
+    sync();
+    var br=document.querySelector('.brand');
+    if(br){var wide=matchMedia('(min-width:900px)');
+      function logo(){br.querySelectorAll('.pv').forEach(function(x){x.remove()});
+        var i=document.createElement('img');i.className='pv';i.alt='The Cement People';
+        if(wide.matches){i.src='/preview-assets/tcp-logo-primary-on-light.svg';i.style.height='65px';br.prepend(i)}
+        else{i.src='/preview-assets/tcp-emblem-compact-ochre.svg';i.style.height='40px';br.prepend(i);var s=document.createElement('b');s.className='pv nm-line';s.textContent='THE CEMENT PEOPLE';br.append(s)}}
+      logo();wide.addEventListener('change',logo)}
+    var f=document.querySelector('.foot div');
+    if(f){var e=document.createElement('img');e.src='/preview-assets/tcp-emblem-compact-ochre.svg';e.alt='';e.style.cssText='width:44px;height:44px;flex:none';f.prepend(e)}
+  });
+})();
+</script>
+</head>
 <body>
 
 <header><div class="hin">
@@ -95,7 +154,7 @@
 
 <script type="application/json" id="tcp-data">{"currency":"GH₵","taxRate":0,"business":{"phone":"055 846 3468","whatsapp":"233558463468","town":"Kasoa, Ghana","website":"thecementpeople.com"},"products":[{"id":"c1","cat":"Cement","name":"Supacem 32.5R","unit":"50 kg bag","price":75,"img":"/images/products/supacem-32-5.webp","alt":"Supacem Supa Fast 32.5R bag, green and kraft brown"},{"id":"c2","cat":"Cement","name":"Supacem 42.5R","unit":"50 kg bag","price":100,"img":"/images/products/supacem-42-5.webp","alt":"Supacem Supa Power 42.5R bag, kraft brown with black panel"},{"id":"c3","cat":"Cement","name":"Dzata 42.5R","unit":"50 kg bag","price":110,"img":"/images/products/dzata-42-5.webp","alt":"Dzata 42.5R bag, kraft brown with black and white lion panel"},{"id":"c4","cat":"Cement","name":"Ghacem Waterproof 42.5N","unit":"50 kg bag","price":120,"img":"/images/products/ghacem-waterproof-42-5.webp","alt":"Ghacem Super Strong Waterproof 42.5N bag, black and yellow panel with blue waves"},{"id":"i1","cat":"Iron Rods (Single Piece)","name":"Iron rod 16 mm","unit":"30 ft rod","price":102,"size":"16 mm"},{"id":"i2","cat":"Iron Rods (Single Piece)","name":"Iron rod 14 mm","unit":"30 ft rod","price":75,"size":"14 mm"},{"id":"i3","cat":"Iron Rods (Single Piece)","name":"Iron rod 12 mm","unit":"30 ft rod","price":58,"size":"12 mm"},{"id":"i4","cat":"Iron Rods (Single Piece)","name":"Iron rod 11.5 mm","unit":"30 ft rod","price":48,"size":"11.5 mm"},{"id":"i5","cat":"Iron Rods (Single Piece)","name":"Iron rod 10 mm","unit":"30 ft rod","price":40,"size":"10 mm"},{"id":"i6","cat":"Iron Rods (Single Piece)","name":"Iron rod 8 mm","unit":"30 ft rod","price":25,"size":"8 mm"},{"id":"j1","cat":"Iron Rods (Per Ton)","name":"Iron rod 16 mm","unit":"ton","price":7000,"size":"16 mm"},{"id":"j2","cat":"Iron Rods (Per Ton)","name":"Iron rod 14 mm","unit":"ton","price":7000,"size":"14 mm"},{"id":"j3","cat":"Iron Rods (Per Ton)","name":"Iron rod 12 mm","unit":"ton","price":7000,"size":"12 mm"},{"id":"j4","cat":"Iron Rods (Per Ton)","name":"Iron rod 11.5 mm","unit":"ton","price":7000,"size":"11.5 mm"},{"id":"j5","cat":"Iron Rods (Per Ton)","name":"Iron rod 10 mm","unit":"ton","price":7000,"size":"10 mm"},{"id":"j6","cat":"Iron Rods (Per Ton)","name":"Iron rod 8 mm","unit":"ton","price":7000,"size":"8 mm"},{"id":"i8","cat":"Iron Rods (Single Piece)","sub":"Binding wire","name":"Binding wire","unit":"roll","price":60,"img":"/images/products/binding-wire.webp","alt":"Coil of black annealed binding wire"}],"banners":{"rods":{"src":"/images/products/iron-rods-1086.webp","srcset":"/images/products/iron-rods-720.webp 720w, /images/products/iron-rods-1086.webp 1086w, /images/products/iron-rods-1440.webp 1440w","w":1086,"h":363}},"categoryInfo":{"Iron Rods (Single Piece)":{"banner":"rods","note":"Sold by the piece. Each rod is 30 ft long."},"Iron Rods (Per Ton)":{"banner":"rods","note":"Available in all listed sizes."}}}</script>
 
-<script src="/scripts/quote-engine.js"></script>
+<script src="/scripts/quote-engine.js?v=5e05ea2596"></script>
 
 </body>
 </html>
