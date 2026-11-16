@@ -34,52 +34,60 @@
      files are fetched early so the headline and prices draw in the right font. -->
 <link rel="preload" href="/fonts/montserrat-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/montserrat-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/_astro/index.Cm9JrFxD.css"><!-- PREVIEW ONLY (16 Nov 2026): material-language test. Added to this preview copy only; not in the website's code. -->
+<link rel="stylesheet" href="/_astro/index.Cm9JrFxD.css"><!-- PREVIEW ONLY (16 Nov 2026): material and colour test. Added to this preview copy only; not in the website's code. -->
 <style id="tcp-preview">
 @font-face{font-family:JostPreview;font-weight:700;src:url(/preview-assets/jost-latin-700-normal.woff2) format("woff2")}
-/* New identity colours (preview approximation of step 1) */
-:root{--y:#D27D02;--y-soft:#F2DDBA;--ink:#131514}
-/* Colour temperature of the page */
-html[data-t=warm]{--pg:#F7F4EF;--tex:url(/preview-assets/concrete-warm.webp)}
-html[data-t=less]{--pg:#F6F4F2;--tex:url(/preview-assets/concrete-less-warm.webp)}
-html[data-t=neutral]{--pg:#F4F4F4;--tex:url(/preview-assets/concrete-neutral.webp)}
+/* Identity colours. --y = main action colour (Ochre A by default); --y2 = Ochre B for secondary accents */
+:root{--y:#D27D02;--y2:#B97819;--y-soft:#F2DDBA;--ink:#131514}
+html[data-b=bright]{--y:#E08A04;--y-soft:#F6DFB8}
+/* Page colour temperature */
+html[data-t=warm]{--pg:#F7F4EF}
+html[data-t=less]{--pg:#F6F4F2}
+html[data-t=neutral]{--pg:#F4F4F4}
 :root{--bg:var(--pg)}
-/* Main page material: concrete, or flat for comparison */
+/* Concrete strength: 25, 30 or 45 % of the reference board's concrete */
+html[data-t=warm][data-k="25"]{--tex:url(/preview-assets/concrete-warm-25.webp)}html[data-t=warm][data-k="30"]{--tex:url(/preview-assets/concrete-warm-30.webp)}html[data-t=warm][data-k="45"]{--tex:url(/preview-assets/concrete-warm-45.webp)}
+html[data-t=less][data-k="25"]{--tex:url(/preview-assets/concrete-less-25.webp)}html[data-t=less][data-k="30"]{--tex:url(/preview-assets/concrete-less-30.webp)}html[data-t=less][data-k="45"]{--tex:url(/preview-assets/concrete-less-45.webp)}
+html[data-t=neutral][data-k="25"]{--tex:url(/preview-assets/concrete-neutral-25.webp)}html[data-t=neutral][data-k="30"]{--tex:url(/preview-assets/concrete-neutral-30.webp)}html[data-t=neutral][data-k="45"]{--tex:url(/preview-assets/concrete-neutral-45.webp)}
 body{background-color:var(--pg)}
-html[data-s=concrete] body{background-image:var(--tex);background-size:512px 512px}
-.hero{background:transparent}
-.sec,.sec.alt{background:transparent}
-/* Functional surfaces stay flat: price list and estimate are smooth panels */
+html:not([data-k="0"]) body{background-image:var(--tex);background-size:512px 512px}
+.hero,.sec,.sec.alt{background:transparent}
+/* Functional surfaces stay flat */
 #catalog{background:var(--pg);border-radius:var(--r-panel);box-shadow:0 0 0 20px var(--pg),0 0 0 21px var(--line)}
 .docket,.dh{background:var(--pg)}
 @media (max-width:899px){#catalog{border-radius:0;box-shadow:0 0 0 16px var(--pg)}
   .hpic img{-webkit-mask-image:linear-gradient(180deg,transparent,#000 22%,#000 90%,transparent);mask-image:linear-gradient(180deg,transparent,#000 22%,#000 90%,transparent)}}
-/* V1.1 logo in place of the old brick mark */
+/* Ochre B for secondary accents: active tab, menu hover, footer and phone-bar rules */
+.tabs button[aria-pressed="true"]{border-bottom-color:var(--y2)}
+nav a:hover{border-bottom-color:var(--y2)}
+.foot,.bar{border-top-color:var(--y2)}
+/* V1.1 logo */
 .brand svg,.brand span,.foot svg{display:none}
 .brand img{display:block}
 .brand .nm-line{font:700 16px/1 JostPreview,Montserrat,sans-serif;white-space:nowrap;letter-spacing:.01em}
-.foot{border-top-color:#D27D02}.bar{border-top-color:#D27D02}
-/* Phones under 430 px: the one-line name does not fit beside "Enquire" and the menu, so the WhatsApp button shows its icon only (preview finding) */
 @media (max-width:429px){.hin .wa span{display:none}.hin .wa{padding:10px 12px}}
 /* The preview switch */
 #tcp-pv{font:600 13px/1.3 Montserrat,system-ui,sans-serif;background:#131514;color:#fff;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;position:relative;z-index:20}
 #tcp-pv b{color:#D27D02;letter-spacing:.08em}
-#tcp-pv span{display:inline-flex;gap:4px;align-items:center}
-#tcp-pv button{font:inherit;min-height:32px;padding:4px 10px;border-radius:5px;border:1px solid #5d5a54;background:transparent;color:#fff;cursor:pointer}
+#tcp-pv span{display:inline-flex;gap:4px;align-items:center;flex-wrap:wrap}
+#tcp-pv button{font:inherit;min-height:32px;padding:4px 9px;border-radius:5px;border:1px solid #5d5a54;background:transparent;color:#fff;cursor:pointer}
 #tcp-pv button[aria-pressed=true]{background:#D27D02;border-color:#D27D02;color:#131514}
 </style>
 <script>
 (function(){
   var q=new URLSearchParams(location.search),h=document.documentElement;
-  h.dataset.t=({warm:1,less:1,neutral:1})[q.get('t')]?q.get('t'):'less';
-  h.dataset.s=({flat:1,concrete:1})[q.get('s')]?q.get('s'):'concrete';
+  var OPT={t:['warm','less','neutral'],k:['0','25','30','45'],b:['a','bright']},DEF={t:'neutral',k:'25',b:'a'};
+  Object.keys(OPT).forEach(function(k){var v=q.get(k);h.dataset[k]=OPT[k].indexOf(v)>=0?v:DEF[k]});
   document.addEventListener('DOMContentLoaded',function(){
     var bar=document.createElement('div');bar.id='tcp-pv';
-    bar.innerHTML='<b>PREVIEW</b><span>Colour: <button data-k="t" data-v="warm">Warm</button><button data-k="t" data-v="less">50% less warm</button><button data-k="t" data-v="neutral">Neutral</button></span><span>Page: <button data-k="s" data-v="concrete">Concrete</button><button data-k="s" data-v="flat">Flat</button></span>';
+    bar.innerHTML='<b>PREVIEW</b>'+
+     '<span>Colour: <button data-k="t" data-v="warm">Warm</button><button data-k="t" data-v="less">50% less warm</button><button data-k="t" data-v="neutral">Neutral</button></span>'+
+     '<span>Concrete: <button data-k="k" data-v="0">Flat</button><button data-k="k" data-v="25">25%</button><button data-k="k" data-v="30">30%</button><button data-k="k" data-v="45">45%</button></span>'+
+     '<span>Buttons: <button data-k="b" data-v="a">Ochre A</button><button data-k="b" data-v="bright">Brighter</button></span>';
     document.body.prepend(bar);
     function sync(){bar.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',h.dataset[b.dataset.k]===b.dataset.v)})}
     bar.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;h.dataset[b.dataset.k]=b.dataset.v;sync();
-      var u=new URL(location.href);u.searchParams.set('t',h.dataset.t);u.searchParams.set('s',h.dataset.s);history.replaceState(null,'',u)});
+      var u=new URL(location.href);Object.keys(OPT).forEach(function(k){u.searchParams.set(k,h.dataset[k])});history.replaceState(null,'',u)});
     sync();
     var br=document.querySelector('.brand');
     if(br){var wide=matchMedia('(min-width:900px)');
