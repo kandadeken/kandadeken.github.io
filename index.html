@@ -38,7 +38,7 @@
 <style id="tcp-preview">
 @font-face{font-family:JostPreview;font-weight:700;src:url(/preview-assets/jost-latin-700-normal.woff2) format("woff2")}
 /* One interface ochre (--y) for buttons and accents; Ochre B retired. The emblem stays Ochre A. */
-:root{--ink:#131514;--pg:#F4F4F4;--bg:var(--pg);--y:#F08F02}
+:root{--ink:#131514;--pg:#F4F4F4;--bg:var(--pg);--y:#FF9802}
 html[data-b=a]{--y:#D27D02}html[data-b=b1]{--y:#E08A04}html[data-b=b2]{--y:#F08F02}html[data-b=b3]{--y:#FF9802}html[data-b=b4]{--y:#FF8C00}
 :root{--y-soft:color-mix(in srgb,var(--y) 28%,#fff)}
 /* Neutral page with 25% concrete (Flat for comparison) */
@@ -91,7 +91,7 @@ html[data-k="25"] body{background-image:url(/preview-assets/concrete-neutral-25.
 <script>
 (function(){
   var q=new URLSearchParams(location.search),h=document.documentElement;
-  var OPT={b:['a','b1','b2','b3','b4'],k:['0','25']},DEF={b:'b2',k:'25'};
+  var OPT={b:['a','b1','b2','b3','b4'],k:['0','25']},DEF={b:'b3',k:'25'};
   Object.keys(OPT).forEach(function(k){var v=q.get(k);h.dataset[k]=OPT[k].indexOf(v)>=0?v:DEF[k]});
   var CHEV='<svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
   document.addEventListener('DOMContentLoaded',function(){
@@ -133,12 +133,154 @@ html[data-k="25"] body{background-image:url(/preview-assets/concrete-neutral-25.
       menu.querySelector('a').focus({preventScroll:true})}
     function make(cls,label){var b=document.createElement('button');b.type='button';b.className='pv-enq '+cls;b.setAttribute('aria-haspopup','menu');b.setAttribute('aria-expanded','false');
       b.innerHTML=label+CHEV;b.addEventListener('click',function(e){e.stopPropagation();open(b)});return b}
-    if(waSrc)waSrc.after(make('p','Enquire'));
+    /* header Enquire removed (16 Nov): enquiries stay in the hero and the contact section */
     if(callSrc)callSrc.after(make('s','Enquire'));
     var big=document.querySelector('#contact .wa.big');if(big)big.after(make('p big','Enquire'));
     document.addEventListener('click',function(e){if(cur&&!menu.contains(e.target))close()});
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&cur){var b=cur;close();b.focus()}});
     window.addEventListener('resize',close);window.addEventListener('scroll',function(){if(cur&&window.innerWidth>=600)close()},{passive:true});
+  });
+})();
+</script>
+<!-- PREVIEW ONLY (16 Nov 2026): proposed estimate section. Switch "Estimate: Current / Proposed" in the preview bar. -->
+<style id="pv-est">
+/* ---------- Proposed estimate (html[data-e=new]) ---------- */
+html[data-e=new] #est{display:flex;flex-direction:column;background:var(--card)}
+html[data-e=new] .dh{background:var(--ink);color:#fff;border:0;padding:14px 16px}
+html[data-e=new] .dh b{font-size:var(--t-sub);letter-spacing:.01em}
+html[data-e=new] .dh span{color:#cfcac0}
+html[data-e=new] .dm{background:var(--ink);color:#cfcac0;border:0;padding:0 16px 12px;margin-top:-6px}
+html[data-e=new] .pv-scroll{padding:0 16px}
+html[data-e=new] #pv-sum{display:flex;flex-wrap:wrap;gap:6px;padding:12px 0 4px}
+html[data-e=new] #pv-sum:empty{display:none}
+html[data-e=new] #pv-sum span{font-size:var(--t-label);font-weight:var(--w-label);background:var(--pg);border:1px solid var(--line);border-radius:999px;padding:4px 10px;white-space:nowrap}
+html[data-e=new] #lines{padding:0}
+html[data-e=new] .pv-g{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:14px 0 0;padding:0 0 6px;border-bottom:2px solid var(--ink);font-size:var(--t-label);font-weight:var(--w-strong);letter-spacing:.06em;text-transform:uppercase}
+html[data-e=new] .pv-g span{letter-spacing:0;text-transform:none;font-weight:var(--w-label);color:var(--mute);white-space:nowrap}
+html[data-e=new] .ln{padding:10px 0;gap:4px 10px}
+html[data-e=new] .ln .nm{font-weight:var(--w-label);line-height:1.3}
+html[data-e=new] .ln .nm small{display:block;font-weight:var(--w-text);color:var(--mute);font-size:var(--t-small)}
+html[data-e=new] .ln .amt{font-size:var(--t-body)}
+html[data-e=new] .empty{padding:20px 0 6px}
+html[data-e=new] .pv-deliv{margin:16px 0 0;padding:14px;background:var(--pg);border-radius:var(--r-control)}
+html[data-e=new] .pv-deliv h4{margin:0 0 2px;font-size:var(--t-body);font-weight:var(--w-strong)}
+html[data-e=new] .pv-deliv p{margin:0 0 8px;font-size:var(--t-small);color:var(--mute)}
+html[data-e=new] .pv-deliv .dl{padding:0;font-size:var(--t-small)}
+html[data-e=new] .pv-deliv #loc{background:#fff}
+html[data-e=new] .pv-fineblock{padding:14px 0 16px}
+html[data-e=new] .pv-fineblock .fine{padding:0 0 8px}
+html[data-e=new] .pv-fineblock #clear{padding:6px 0;min-height:var(--tap)}
+html[data-e=new] .pv-foot{background:var(--card);border-top:1px solid var(--line);box-shadow:0 -8px 18px rgba(0,0,0,.05);padding:10px 16px 14px}
+html[data-e=new] .pv-foot .tot{padding:0}
+html[data-e=new] .pv-foot .tot div{padding:3px 0;font-size:var(--t-small)}
+html[data-e=new] .pv-foot .tot .gt{font-size:var(--t-sub);margin-top:6px;padding-top:8px}
+html[data-e=new] .pv-foot .tot .pv-tbc{color:var(--mute);font-style:normal}
+html[data-e=new] .pv-foot .acts{display:grid;grid-template-columns:1fr auto;gap:8px;padding:10px 0 0}
+html[data-e=new] .pv-foot .acts .cta{padding:12px;font-size:var(--t-body);min-height:48px}
+html[data-e=new] #print{display:inline-flex;align-items:center;gap:6px;min-height:48px;padding:0 14px;border:1px solid var(--ink);border-radius:var(--r-control);background:#fff;color:var(--ink);text-decoration:none;font-size:var(--t-small);font-weight:var(--w-label);cursor:pointer}
+html[data-e=new] #print svg{width:18px;height:18px}
+html[data-e=new] #print:disabled{opacity:.4;cursor:default}
+html[data-e=new] #send.off{opacity:.4}
+/* Price list: rows already in the estimate get a faint ochre wash */
+html[data-e=new] .row:has(.step){background:color-mix(in srgb,var(--y) 9%,transparent);border-radius:var(--r-control)}
+@media (min-width:900px){
+  html[data-e=new] .docket{max-height:calc(100vh - 132px);top:calc(env(safe-area-inset-top,0px) + 108px)}
+  html[data-e=new] .pv-scroll{flex:1 1 auto;min-height:0;overflow:auto;overscroll-behavior:contain}
+}
+@media (max-width:899px){
+  html[data-e=new] #est.open{display:flex;flex-direction:column;overflow:hidden;height:100dvh;padding-bottom:0}
+  html[data-e=new] #est.open .pv-scroll{flex:1 1 auto;min-height:0;overflow:auto;overscroll-behavior:contain}
+  html[data-e=new] #est.open .pv-foot{padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+  html[data-e=new] #est.open .dclose{position:static}
+  html[data-e=new] #est.open .dh{padding:10px 16px}html[data-e=new] #est.open .dm{padding-bottom:10px}
+  /* phone bar: item count above the amount, one line each */
+  html[data-e=new] .bar b{display:flex;flex-direction:column;line-height:1.15;font-weight:var(--w-strong);font-size:var(--t-sub)}
+  html[data-e=new] .bar b small{font-size:var(--t-label);font-weight:var(--w-label);color:#cfcac0}
+  html[data-e=new] .bar button{white-space:nowrap;padding:12px 18px;font-size:var(--t-body)}
+}
+/* Proposed quotation (print): V1.1 logo, ochre rule, units in the quantity column */
+@media print{
+  html[data-e=new] .q-head{border-bottom-color:#131514!important}
+  html[data-e=new] .q-brand svg{display:none!important}
+  html[data-e=new] .q-brand img{height:15mm;width:auto;display:block}
+  html[data-e=new] .q-brand>div>b{display:none}
+  html[data-e=new] .q-sum .gt{background:#FF9802!important;color:#131514}
+  html[data-e=new] #quote .pv-gr td{background:#F4F4F4;font-weight:700;font-size:7.5pt;letter-spacing:.08em;text-transform:uppercase;padding:1.6mm 2.5mm}
+}
+</style>
+<script>
+(function(){
+  var h=document.documentElement,q=new URLSearchParams(location.search);
+  h.dataset.e=q.get('e')==='current'?'current':'new';
+  document.addEventListener('DOMContentLoaded',function(){
+    // switch in the preview bar
+    var bar=document.getElementById('tcp-pv');
+    if(bar){var s=document.createElement('span');s.innerHTML='Estimate: <button data-k="e" data-v="current">Current</button><button data-k="e" data-v="new">Proposed</button>';bar.append(s);
+      s.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',h.dataset.e===b.dataset.v);b.addEventListener('click',function(){var u=new URL(location.href);u.searchParams.set('e',b.dataset.v);location.href=u.href})})}
+    if(h.dataset.e!=='new')return;
+    var est=document.getElementById('est'),lines=document.getElementById('lines'),tot=document.getElementById('tot'),acts=est.querySelector('.acts'),dl=est.querySelector('.dl'),fine=est.querySelector('.fine'),clear=document.getElementById('clear'),pr=document.getElementById('print');
+    // Build: header | scroll (summary, grouped lines, delivery, small print, clear) | pinned footer (totals, actions)
+    var sc=document.createElement('div');sc.className='pv-scroll';
+    var sum=document.createElement('div');sum.id='pv-sum';
+    var dv=document.createElement('section');dv.className='pv-deliv';dv.innerHTML='<h4>Delivery</h4><p>Not included in the total. We confirm the delivery cost for your order and location after you send this estimate.</p>';
+    var fb=document.createElement('div');fb.className='pv-fineblock';
+    var ft=document.createElement('div');ft.className='pv-foot';
+    est.querySelector('.dm').after(sc);sc.append(sum,lines,dv,fb);dv.append(dl);fb.append(fine,clear);
+    sc.after(ft);ft.append(tot,acts);
+    pr.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>PDF';
+    pr.setAttribute('aria-label','Print or save this estimate as a PDF');
+    var sd=document.getElementById('send');[].slice.call(sd.childNodes).forEach(function(n){if(n.nodeType===3&&/WhatsApp/.test(n.textContent))n.textContent='Send on WhatsApp'});
+    var send=document.getElementById('send');
+    var G=function(id,ln){if(id[0]==='c')return 'Cement';if(id[0]==='j')return 'Iron rods, by the ton';if(/per roll/.test(ln.textContent))return 'Binding wire';return 'Iron rods, single pieces'};
+    var ORDER=['Cement','Iron rods, single pieces','Iron rods, by the ton','Binding wire'];
+    var num=function(t){return parseFloat(String(t).replace(/[^0-9.]/g,''))||0};
+    var fmt=function(n){return 'GH₵'+n.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2})};
+    var busy=false;
+    var lo,to;
+    function shape(){
+      if(busy)return;busy=true;if(lo)lo.disconnect();
+      lines.querySelectorAll('.pv-g').forEach(function(x){x.remove()});
+      var L=[].slice.call(lines.querySelectorAll('.ln'));
+      var groups={},units={bags:0,rods:0,tons:0,rolls:0};
+      L.forEach(function(ln){var inp=ln.querySelector('input[data-qty]');var id=inp?inp.dataset.qty:'';var g=G(id,ln);(groups[g]=groups[g]||[]).push(ln);
+        var n=inp?num(inp.value):0,t=ln.querySelector('small').textContent;
+        if(/bag/.test(t))units.bags+=n;else if(/ton/.test(t))units.tons+=n;else if(/roll/.test(t))units.rolls+=n;else units.rods+=n});
+      if(L.length){
+        ORDER.forEach(function(g){if(!groups[g])return;var hd=document.createElement('h4');hd.className='pv-g';
+          var st=groups[g].reduce(function(s,ln){return s+num(ln.querySelector('.amt').textContent)},0);
+          hd.innerHTML=g+'<span>'+fmt(st)+'</span>';lines.append(hd);groups[g].forEach(function(ln){lines.append(ln)})});
+      }
+      var chips=[];
+      if(units.bags)chips.push(units.bags+(units.bags===1?' bag':' bags')+' of cement');
+      if(units.rods)chips.push(units.rods+(units.rods===1?' rod':' rods'));
+      if(units.tons)chips.push(units.tons+(units.tons===1?' ton':' tons')+' of rods');
+      if(units.rolls)chips.push(units.rolls+(units.rolls===1?' roll':' rolls')+' of binding wire');
+      sum.innerHTML=chips.map(function(c){return '<span>'+c+'</span>'}).join('');
+      // totals: say plainly that delivery is not yet priced
+      tot.querySelectorAll('div').forEach(function(d){var a=d.children[0],b=d.children[1];if(!a||!b)return;
+        if(a.textContent==='Materials')a.textContent='Materials ('+L.length+(L.length===1?' item':' items')+')';
+        if(a.textContent==='Delivery'){b.textContent='To be confirmed';b.className='pv-tbc'}});
+      pr.disabled=!L.length;
+      if(lo)lo.observe(lines,{childList:true});busy=false;
+    }
+    lo=new MutationObserver(shape);lo.observe(lines,{childList:true});
+    to=new MutationObserver(function(){if(!busy)shape()});to.observe(tot,{childList:true});
+    shape();
+    // phone bar: "8 items" over the amount
+    var bt=document.getElementById('barTxt');
+    function barTxt(){var m=/Estimate: (.+) \((\d+ items?)\)/.exec(bt.textContent);if(!m)return;bt.innerHTML='<small>'+m[2]+' in your estimate</small>'+m[1]}
+    new MutationObserver(function(){if(!bt.querySelector('small'))barTxt()}).observe(bt,{childList:true,characterData:true,subtree:true});barTxt();
+    // quotation: V1.1 logo, units in the Qty column, group rows
+    var Q=document.getElementById('quote'),qbusy=false,qo;
+    function quote(){if(qbusy)return;qbusy=true;if(qo)qo.disconnect();
+      var b=Q.querySelector('.q-brand');if(b&&!b.querySelector('img')){var i=document.createElement('img');i.src='/preview-assets/tcp-logo-primary-on-light.svg';i.alt='The Cement People';b.prepend(i)}
+      Q.querySelectorAll('tbody tr').forEach(function(tr){var d=tr.children[1],qc=tr.children[2];if(!d||!qc||tr.dataset.pv)return;tr.dataset.pv=1;
+        var t=d.querySelector('small')?d.querySelector('small').textContent:'',n=num(qc.textContent);
+        var u=/bag/.test(t)?(n===1?'bag':'bags'):/ton/.test(t)?(n===1?'ton':'tons'):/roll/.test(t)?(n===1?'roll':'rolls'):/rod/.test(t)?(n===1?'pc':'pcs'):'';
+        if(u)qc.textContent=qc.textContent+' '+u;
+        if(/per roll/.test(t))d.querySelector('small').textContent='Binding wire, per roll'});
+      if(qo)qo.observe(Q,{childList:true,subtree:true});qbusy=false}
+    qo=new MutationObserver(quote);qo.observe(Q,{childList:true,subtree:true});quote();
   });
 })();
 </script>
