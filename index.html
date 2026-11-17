@@ -34,375 +34,12 @@
      files are fetched early so the headline and prices draw in the right font. -->
 <link rel="preload" href="/fonts/montserrat-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/montserrat-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/_astro/index.Cm9JrFxD.css"><!-- PREVIEW ONLY (16 Nov 2026): consolidated material and colour preview. Added to this preview copy only; not in the website's code. -->
-<style id="tcp-preview">
-@font-face{font-family:JostPreview;font-weight:700;src:url(/preview-assets/jost-latin-700-normal.woff2) format("woff2")}
-/* One interface ochre (--y) for buttons and accents; Ochre B retired. The emblem stays Ochre A. */
-:root{--ink:#131514;--pg:#F4F4F4;--bg:var(--pg);--y:#FF9802}
-html[data-b=a]{--y:#D27D02}html[data-b=b1]{--y:#E08A04}html[data-b=b2]{--y:#F08F02}html[data-b=b3]{--y:#FF9802}html[data-b=b4]{--y:#FF8C00}
-:root{--y-soft:color-mix(in srgb,var(--y) 28%,#fff)}
-/* Neutral page with 25% concrete (Flat for comparison) */
-body{background-color:var(--pg)}
-html[data-k="25"] body{background-image:url(/preview-assets/concrete-neutral-25.webp);background-size:512px 512px}
-.hero,.sec,.sec.alt{background:transparent}
-#catalog{background:var(--pg);border-radius:var(--r-panel);box-shadow:0 0 0 20px var(--pg),0 0 0 21px var(--line)}
-.docket,.dh{background:var(--pg)}
-@media (max-width:899px){#catalog{border-radius:0;box-shadow:0 0 0 16px var(--pg)}
-  .hpic img{-webkit-mask-image:linear-gradient(180deg,transparent,#000 22%,#000 90%,transparent);mask-image:linear-gradient(180deg,transparent,#000 22%,#000 90%,transparent)}}
-.tabs button[aria-pressed="true"],nav a:hover{border-bottom-color:var(--y)}
-.foot,.bar{border-top-color:var(--y)}
-/* V1.1 logo in the header */
-.brand svg,.brand span{display:none}
-.brand img{display:block}
-.brand .nm-line{font:700 16px/1 JostPreview,Montserrat,sans-serif;white-space:nowrap;letter-spacing:.01em}
-/* One "Enquire" in place of the WhatsApp button and "Call us" */
-.hin .wa,.htx .btn2,#contact .wa.big{display:none!important}
-.pv-enq{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:var(--tap);padding:10px 16px;border-radius:var(--r-control);font:var(--w-label) var(--t-small)/1 var(--font);cursor:pointer;white-space:nowrap}
-.pv-enq.p{background:var(--y);color:var(--ink);border:1px solid var(--y)}
-.pv-enq.s{background:var(--card);color:var(--ink);border:1px solid var(--ink);font-size:var(--t-body)}
-.pv-enq.big{padding:12px 22px;font-size:var(--t-body)}
-.pv-enq svg.chev{width:14px;height:14px;transition:transform .15s}.pv-enq[aria-expanded=true] svg.chev{transform:rotate(180deg)}
-#pv-menu{position:fixed;z-index:30;background:var(--card);border:1px solid var(--line);border-radius:var(--r-panel);box-shadow:0 10px 30px rgba(0,0,0,.14);padding:6px;min-width:250px;display:none}
-#pv-menu.open{display:block}
-#pv-menu a{display:flex;align-items:center;gap:12px;min-height:52px;padding:8px 12px;border-radius:6px;color:var(--ink);text-decoration:none;font-weight:var(--w-label)}
-#pv-menu a:hover,#pv-menu a:focus-visible{background:var(--pg)}
-#pv-menu a svg{width:22px;height:22px;flex:none}
-#pv-menu small{display:block;font-weight:400;color:var(--mute);font-size:var(--t-small)}
-#pv-scrim{position:fixed;inset:0;background:rgba(19,21,20,.35);z-index:29;display:none}
-@media (max-width:599px){#pv-menu{left:0!important;right:0;bottom:0;top:auto!important;border-radius:14px 14px 0 0;padding:10px 12px calc(14px + env(safe-area-inset-bottom,0px))}
-  #pv-menu.open+#pv-scrim{display:block}#pv-menu .grab{display:block;width:40px;height:4px;border-radius:2px;background:var(--line);margin:2px auto 8px}}
-#pv-menu .grab{display:none}
-@media (max-width:429px){.hin{gap:8px}.brand .nm-line{font-size:15px}.hin .pv-enq.p{padding:10px}.hin .pv-enq.p svg.chev{display:none}}
-@media (max-width:379px){.brand .nm-line{font-size:14px}.brand img.pv{height:36px!important}}
-/* Footer: horizontal logo on one line */
-.foot svg{display:none}
-.foot div{flex-direction:column;align-items:flex-start;gap:14px}
-.foot .pv-hlogo{display:block;height:64px;width:auto;max-width:100%}
-.foot p b{display:none} /* the logo above now carries the name */
-@media (max-width:599px){.foot .pv-hlogo{height:56px}}
-/* The preview switch */
-#tcp-pv{font:600 13px/1.3 Montserrat,system-ui,sans-serif;background:#131514;color:#fff;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:center;position:relative;z-index:20}
-#tcp-pv b{color:#D27D02;letter-spacing:.08em}
-#tcp-pv span{display:inline-flex;gap:4px;align-items:center;flex-wrap:wrap}
-#tcp-pv button{font:inherit;min-height:32px;padding:4px 8px;border-radius:5px;border:1px solid #5d5a54;background:transparent;color:#fff;cursor:pointer}
-#tcp-pv button i{display:inline-block;width:12px;height:12px;border-radius:2px;vertical-align:-1px;margin-right:5px}
-#tcp-pv button[aria-pressed=true]{background:#fff;border-color:#fff;color:#131514}
-</style>
-<script>
-(function(){
-  var q=new URLSearchParams(location.search),h=document.documentElement;
-  var OPT={b:['a','b1','b2','b3','b4'],k:['0','25']},DEF={b:'b3',k:'25'};
-  Object.keys(OPT).forEach(function(k){var v=q.get(k);h.dataset[k]=OPT[k].indexOf(v)>=0?v:DEF[k]});
-  var CHEV='<svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
-  document.addEventListener('DOMContentLoaded',function(){
-    var bar=document.createElement('div');bar.id='tcp-pv';
-    var sw=[['a','#D27D02','Ochre A'],['b1','#E08A04','#E08A04'],['b2','#F08F02','#F08F02'],['b3','#FF9802','#FF9802'],['b4','#FF8C00','#FF8C00']];
-    bar.innerHTML='<b>PREVIEW</b><span>Button ochre: '+sw.map(function(s){return '<button data-k="b" data-v="'+s[0]+'"><i style="background:'+s[1]+'"></i>'+s[2]+'</button>'}).join('')+'</span>'+
-      '<span>Page: <button data-k="k" data-v="25">Concrete 25%</button><button data-k="k" data-v="0">Flat</button></span>';
-    document.body.prepend(bar);
-    function sync(){bar.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',h.dataset[b.dataset.k]===b.dataset.v)})}
-    bar.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;h.dataset[b.dataset.k]=b.dataset.v;sync();
-      var u=new URL(location.href);Object.keys(OPT).forEach(function(k){u.searchParams.set(k,h.dataset[k])});history.replaceState(null,'',u)});
-    sync();
-    // Header logo
-    var br=document.querySelector('.brand');
-    if(br){var wide=matchMedia('(min-width:900px)');
-      function logo(){br.querySelectorAll('.pv').forEach(function(x){x.remove()});
-        var i=document.createElement('img');i.className='pv';i.alt='The Cement People';
-        if(wide.matches){i.src='/preview-assets/tcp-logo-primary-on-light.svg';i.style.height='65px';br.prepend(i)}
-        else{i.src='/preview-assets/tcp-emblem-compact-ochre.svg';i.style.height='40px';br.prepend(i);var s=document.createElement('b');s.className='pv nm-line';s.textContent='THE CEMENT PEOPLE';br.append(s)}}
-      logo();wide.addEventListener('change',logo)}
-    // Footer horizontal logo
-    var f=document.querySelector('.foot div');
-    if(f){var e=document.createElement('img');e.className='pv-hlogo';e.src='/preview-assets/proposal-horizontal-logo-on-dark.svg';e.alt='The Cement People';f.prepend(e)}
-    // Enquire: one button, two choices
-    var waSrc=document.querySelector('.hin .wa'),callSrc=document.querySelector('.htx .btn2');
-    var waIcon=waSrc?waSrc.querySelector('svg').outerHTML:'',callIcon=callSrc?callSrc.querySelector('svg').outerHTML:'';
-    var menu=document.createElement('div');menu.id='pv-menu';menu.setAttribute('role','menu');
-    menu.innerHTML='<span class="grab"></span><a role="menuitem" data-pv="wa" target="_blank" rel="noopener">'+waIcon+'<span>Chat on WhatsApp<small>Send us a message</small></span></a>'+
-      '<a role="menuitem" href="tel:+233558463468">'+callIcon+'<span>Call 055 846 3468<small>Mon–Sat, 7:00 am–5:00 pm</small></span></a>';
-    var scrim=document.createElement('div');scrim.id='pv-scrim';
-    document.body.append(menu,scrim);
-    var cur=null;
-    function close(){if(!cur)return;menu.classList.remove('open');cur.setAttribute('aria-expanded','false');cur=null}
-    function open(btn){if(cur===btn){close();return}close();cur=btn;btn.setAttribute('aria-expanded','true');
-      menu.querySelector('[data-pv=wa]').href=(waSrc&&waSrc.href)||'#contact';
-      var r=btn.getBoundingClientRect();menu.classList.add('open');var mw=menu.offsetWidth;
-      menu.style.top=(r.bottom+6)+'px';menu.style.left=Math.max(8,Math.min(window.innerWidth-mw-8,r.right-mw))+'px';
-      if(btn.classList.contains('s')||btn.classList.contains('big'))menu.style.left=Math.max(8,Math.min(window.innerWidth-mw-8,r.left))+'px';
-      menu.querySelector('a').focus({preventScroll:true})}
-    function make(cls,label){var b=document.createElement('button');b.type='button';b.className='pv-enq '+cls;b.setAttribute('aria-haspopup','menu');b.setAttribute('aria-expanded','false');
-      b.innerHTML=label+CHEV;b.addEventListener('click',function(e){e.stopPropagation();open(b)});return b}
-    /* header Enquire removed (16 Nov): enquiries stay in the hero and the contact section */
-    if(callSrc)callSrc.after(make('s','Enquire'));
-    var big=document.querySelector('#contact .wa.big');if(big)big.after(make('p big','Enquire'));
-    document.addEventListener('click',function(e){if(cur&&!menu.contains(e.target))close()});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&cur){var b=cur;close();b.focus()}});
-    window.addEventListener('resize',close);window.addEventListener('scroll',function(){if(cur&&window.innerWidth>=600)close()},{passive:true});
-  });
-})();
-</script>
-<!-- PREVIEW ONLY (16 Nov 2026): proposed estimate section, refinement 2. Switch "Estimate: Current / Proposed" in the preview bar. -->
-<style id="pv-est">
-html[data-e=new] #est{display:flex;flex-direction:column;background:var(--card)}
-html[data-e=new] .dh{background:var(--ink);color:#fff;border:0;padding:14px 16px 4px}
-html[data-e=new] .dh b{font-size:var(--t-sub)}
-html[data-e=new] .dh span{color:#cfcac0}
-html[data-e=new] .dm{background:var(--ink);color:#cfcac0;border:0;padding:0 16px 12px}
-html[data-e=new] .pv-scroll{padding:0 16px}
-/* At a glance */
-html[data-e=new] #pv-glance{padding:14px 0 6px}
-html[data-e=new] #pv-glance h4,html[data-e=new] .pv-cap{margin:0 0 8px;font-size:var(--t-label);font-weight:var(--w-strong);letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
-html[data-e=new] #pv-glance .t{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-html[data-e=new] #pv-glance .t div{background:var(--pg);border-radius:var(--r-control);padding:7px 10px;line-height:1.25}
-html[data-e=new] #pv-glance .t b{font-size:18px;font-weight:var(--w-strong);margin-right:5px}
-html[data-e=new] #pv-glance .t span{font-size:var(--t-small);color:var(--mute)}
-html[data-e=new] .pv-tools{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:6px 0 2px;min-height:var(--tap)}
-html[data-e=new] .pv-tools button{display:inline-flex;align-items:center;gap:6px;min-height:var(--tap);padding:0 2px;background:none;border:0;color:var(--ink);font:var(--w-label) var(--t-small)/1 var(--font);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
-html[data-e=new] .pv-tools button svg{width:18px;height:18px;flex:none}
-html[data-e=new] .pv-tools .pv-clr{margin-left:auto;color:var(--mute)}
-html[data-e=new] .pv-confirm{display:none;align-items:center;gap:8px;flex-wrap:wrap;background:var(--pg);border-radius:var(--r-control);padding:10px 12px;margin:4px 0 6px;font-size:var(--t-small)}
-html[data-e=new] .pv-confirm.on{display:flex}
-html[data-e=new] .pv-confirm b{margin-right:auto}
-html[data-e=new] .pv-confirm button{min-height:40px;padding:0 14px;border-radius:var(--r-control);border:1px solid var(--ink);background:#fff;font:var(--w-label) var(--t-small)/1 var(--font);cursor:pointer}
-html[data-e=new] .pv-confirm .yes{background:var(--ink);color:#fff}
-/* Sections */
-html[data-e=new] #lines{padding:0}
-html[data-e=new] .pv-sec{border:1px solid var(--line);border-radius:var(--r-panel);margin:12px 0;overflow:hidden}
-html[data-e=new] .pv-sh{display:flex;align-items:center;gap:10px;width:100%;background:var(--pg);border:0;border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;font:inherit;color:var(--ink);cursor:pointer}
-html[data-e=new] .pv-sh .no{font-size:var(--t-label);font-weight:var(--w-strong);color:var(--mute)}
-html[data-e=new] .pv-sh .nmx{font-weight:var(--w-strong);font-size:var(--t-body)}
-html[data-e=new] .pv-sh .qx{margin-left:auto;font-size:var(--t-small);color:var(--mute);white-space:nowrap}
-html[data-e=new] .pv-sh svg{width:16px;height:16px;flex:none;transition:transform .15s}
-html[data-e=new] .pv-sec.shut .pv-sh svg{transform:rotate(-90deg)}
-html[data-e=new] .pv-sec.shut .pv-body{display:none}
-html[data-e=new] .pv-body{padding:0 12px}
-html[data-e=new] .pv-sub{display:flex;justify-content:space-between;gap:10px;margin:12px 0 0;padding-bottom:4px;border-bottom:1px solid var(--line);font-size:var(--t-label);font-weight:var(--w-strong);letter-spacing:.06em;text-transform:uppercase}
-html[data-e=new] .pv-sub span{letter-spacing:0;text-transform:none;font-weight:var(--w-label);color:var(--mute)}
-html[data-e=new] .pv-st{display:flex;justify-content:space-between;gap:10px;padding:10px 0;font-size:var(--t-small);font-weight:var(--w-label)}
-html[data-e=new] .pv-st b{font-weight:var(--w-strong)}
-html[data-e=new] .pv-st.all{border-top:2px solid var(--ink);margin-top:2px;font-size:var(--t-body)}
-html[data-e=new] .ln{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;padding:10px 0;border-bottom:1px solid var(--line)}
-html[data-e=new] .ln:last-of-type{border-bottom:0}
-html[data-e=new] .ln .nm{grid-column:1;grid-row:1;font-weight:var(--w-label);line-height:1.3}
-html[data-e=new] .ln .nm small{display:block;font-weight:var(--w-text);color:var(--mute);font-size:var(--t-small)}
-html[data-e=new] .ln .amt{grid-column:2;grid-row:1;align-self:start;font-size:var(--t-body)}
-html[data-e=new] .ln .qty{grid-column:1/-1;grid-row:2}
-html[data-e=new] .empty{padding:18px 0 6px}
-html[data-e=new] .pv-start{background:var(--pg);border-radius:var(--r-panel);padding:14px 16px;margin:14px 0 4px}
-html[data-e=new] .pv-start b{display:block;margin-bottom:6px}
-html[data-e=new] .pv-start ol{margin:0;padding-left:20px;font-size:var(--t-small);color:var(--mute)}
-html[data-e=new] .pv-start li{margin-bottom:3px}
-/* Delivery and small print */
-html[data-e=new] .pv-deliv{margin:12px 0 0;padding:14px;background:var(--pg);border-radius:var(--r-control)}
-html[data-e=new] .pv-deliv h4{margin:0 0 2px;font-size:var(--t-body);font-weight:var(--w-strong)}
-html[data-e=new] .pv-deliv p{margin:0 0 8px;font-size:var(--t-small);color:var(--mute)}
-html[data-e=new] .pv-deliv .dl{padding:0;font-size:var(--t-small)}
-html[data-e=new] .pv-deliv #loc{background:#fff}
-html[data-e=new] .pv-scroll>.fine{padding:12px 0 16px}
-html[data-e=new] #clear{display:none}
-/* Pinned footer */
-html[data-e=new] .pv-foot{background:var(--card);border-top:1px solid var(--line);box-shadow:0 -8px 18px rgba(0,0,0,.05);padding:10px 16px 14px}
-html[data-e=new] .pv-foot .tot{padding:0}
-html[data-e=new] .pv-foot .tot div{padding:2px 0;font-size:var(--t-small)}
-html[data-e=new] .pv-foot .tot .pv-hide{display:none}
-html[data-e=new] .pv-foot .tot .pv-tbc{color:var(--mute)}
-html[data-e=new] .pv-foot .tot .gt{font-size:var(--t-sub);margin-top:4px;padding-top:8px}
-html[data-e=new] .pv-foot .acts{display:grid;gap:6px;padding:10px 0 0}
-html[data-e=new] .pv-foot .acts .cta{min-height:48px;font-size:var(--t-body)}
-html[data-e=new] #print{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border:1px solid var(--ink);border-radius:var(--r-control);background:#fff;color:var(--ink);text-decoration:none;font:var(--w-label) var(--t-small)/1 var(--font);cursor:pointer}
-html[data-e=new] #print svg{width:18px;height:18px}
-html[data-e=new] #print:disabled{opacity:.4;cursor:default}
-html[data-e=new] #send.off{opacity:.4}
-/* Full view (computer) */
-html[data-e=new] .pv-tools .pv-full-btn{display:none}
-#pv-fscrim{position:fixed;inset:0;background:rgba(19,21,20,.45);z-index:39;display:none}
-@media (min-width:900px){
-  html[data-e=new] .docket{max-height:calc(100vh - 132px);top:calc(env(safe-area-inset-top,0px) + 108px)}
-  html[data-e=new] .pv-scroll{flex:1 1 auto;min-height:0;overflow:auto;overscroll-behavior:contain}
-  html[data-e=new] .pv-tools .pv-full-btn{display:inline-flex}
-  html[data-e=new] #est.pv-full{position:fixed;top:4vh;left:50%;transform:translateX(-50%);width:min(860px,94vw);max-height:92vh;z-index:40;box-shadow:0 20px 60px rgba(0,0,0,.3)}
-  html[data-e=new] #est.pv-full~#pv-fscrim,html.pv-fullon #pv-fscrim{display:block}
-  html[data-e=new] #est.pv-full .ln{grid-template-columns:minmax(0,1fr) auto 140px;align-items:center}
-  html[data-e=new] #est.pv-full .ln .qty{grid-column:2;grid-row:1}
-  html[data-e=new] #est.pv-full .ln .amt{grid-column:3;align-self:center;text-align:right}
-  html[data-e=new] #est.pv-full #pv-glance .t{grid-template-columns:repeat(4,1fr)}
-  html[data-e=new] #est.pv-full #pv-glance .t b{display:block;font-size:24px}
-  html[data-e=new] #est.pv-full #pv-glance .t div{padding:10px 12px}
-  html[data-e=new] #est.pv-full .pv-foot .acts{grid-template-columns:1fr 260px}
-}
-@media (max-width:899px){
-  html[data-e=new] #est.open{display:flex;flex-direction:column;overflow:hidden;height:100dvh;padding-bottom:0}
-  html[data-e=new] #est.open .pv-scroll{flex:1 1 auto;min-height:0;overflow:auto;overscroll-behavior:contain}
-  html[data-e=new] #est.open .pv-foot{padding-bottom:calc(14px + env(safe-area-inset-bottom,0px))}
-  html[data-e=new] #est.open .dclose{position:static}
-  html[data-e=new] .bar b{display:flex;flex-direction:column;line-height:1.15;font-weight:var(--w-strong);font-size:var(--t-sub)}
-  html[data-e=new] .bar b small{font-size:var(--t-label);font-weight:var(--w-label);color:#cfcac0}
-  html[data-e=new] .bar button{white-space:nowrap;padding:12px 18px;font-size:var(--t-body)}
-}
-/* Price list: selected products */
-html[data-e=new] .row:has(.step){background:color-mix(in srgb,var(--y) 10%,transparent);box-shadow:inset 4px 0 0 var(--y);border-radius:var(--r-control);padding-left:10px}
-html[data-e=new] .row:has(.step) .nm::before{content:"✓ In your estimate";display:block;font-size:12px;font-weight:var(--w-strong);letter-spacing:.02em;color:var(--ink);margin-bottom:2px}
-/* Quotation (print) */
-@media print{
-  html[data-e=new] .q-head{border-bottom-color:#131514!important}
-  html[data-e=new] .q-brand svg{display:none!important}
-  html[data-e=new] .q-brand img{height:15mm;width:auto;display:block}
-  html[data-e=new] .q-brand>div>b{display:none}
-  html[data-e=new] .q-sum .gt{background:#FF9802!important;color:#131514}
-  html[data-e=new] #quote tr.pv-gr td{background:#F4F4F4;font-weight:700;font-size:7.5pt;letter-spacing:.08em;text-transform:uppercase;padding:1.8mm 2.5mm;border-bottom:.25mm solid #131514}
-  html[data-e=new] #quote tr.pv-qs td{font-weight:700;border-bottom:.4mm solid #131514}
-}
-
-/* ---- refinement 3 ---- */
-html[data-e=new] .pv-tools{margin:0;padding:4px 16px;border-bottom:1px solid var(--line);background:var(--card);flex:none}
-html[data-e=new] .pv-confirm{margin:8px 16px;flex:none}
-html[data-e=new] .pv-sec{border:0;border-radius:var(--r-panel);margin:14px 0;box-shadow:0 0 0 1px var(--line)}
-html[data-e=new] .pv-sh{display:grid;grid-template-columns:16px auto minmax(0,1fr) auto;align-items:center;gap:10px;padding:12px;border-bottom:0}
-html[data-e=new] .pv-sh .no{background:var(--y);color:var(--ink);border-radius:4px;padding:2px 6px;font-size:12px}
-html[data-e=new] .pv-sh .nmw{display:flex;flex-direction:column;min-width:0;line-height:1.25}
-html[data-e=new] .pv-sh .nmx{font-size:var(--t-body);text-transform:uppercase;letter-spacing:.05em}
-html[data-e=new] .pv-sh .qx{margin:0;font-size:var(--t-small);color:var(--mute);white-space:normal}
-html[data-e=new] .pv-sh .sx{font-weight:var(--w-strong);font-size:var(--t-body);white-space:nowrap}
-/* alternating neutral tones per material section */
-html[data-e=new] .pv-sec:nth-of-type(odd) .pv-sh{background:#EAEAEA}
-html[data-e=new] .pv-sec:nth-of-type(odd) .pv-body{background:#FFFFFF}
-html[data-e=new] .pv-sec:nth-of-type(even) .pv-sh{background:#DFDFDF}
-html[data-e=new] .pv-sec:nth-of-type(even) .pv-body{background:#F6F6F6}
-html[data-e=new] .pv-sec:not(.shut) .pv-sh{border-bottom:1px solid var(--line)}
-/* product line: name / unit price / quantity + line total */
-html[data-e=new] .ln{grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:12px 0}
-html[data-e=new] .ln .nm{grid-column:1/-1;grid-row:1;font-size:var(--t-body)}
-html[data-e=new] .ln .nm small{margin-top:2px}
-html[data-e=new] .ln .qty{grid-column:1;grid-row:2;align-self:center}
-html[data-e=new] .ln .amt{grid-column:2;grid-row:2;align-self:center;font-size:var(--t-price);text-align:right}
-html[data-e=new] .ln .amt::before{content:"Line total";display:block;font-size:12px;font-weight:var(--w-text);color:var(--mute);line-height:1.2}
-@media (min-width:900px){html[data-e=new] #est.pv-full .ln .nm{grid-column:1;grid-row:1}html[data-e=new] #est.pv-full .ln .amt::before{display:none}}
-
-/* section heading stays at the top of the list while you scroll through that section */
-html[data-e=new] .pv-sec{overflow:visible}
-html[data-e=new] .pv-sh{position:sticky;top:0;z-index:2;border-radius:var(--r-panel) var(--r-panel) 0 0}
-html[data-e=new] .pv-sec.shut .pv-sh{border-radius:var(--r-panel)}
-html[data-e=new] .pv-body{border-radius:0 0 var(--r-panel) var(--r-panel)}
-@media (min-width:900px){html[data-e=new] #est.pv-full .ln .amt{grid-row:1}}
-</style>
-<script>
-(function(){
-  var h=document.documentElement,q=new URLSearchParams(location.search);
-  h.dataset.e=q.get('e')==='current'?'current':'new';
-  var CHEV='<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>';
-  var BIN='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  var EXP='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  var DL='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  document.addEventListener('DOMContentLoaded',function(){
-    var bar=document.getElementById('tcp-pv');
-    if(bar){var s=document.createElement('span');s.innerHTML='Estimate: <button data-k="e" data-v="current">Current</button><button data-k="e" data-v="new">Proposed</button>';bar.append(s);
-      s.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',h.dataset.e===b.dataset.v);b.addEventListener('click',function(){var u=new URL(location.href);u.searchParams.set('e',b.dataset.v);location.href=u.href})})}
-    if(h.dataset.e!=='new')return;
-    var est=document.getElementById('est'),lines=document.getElementById('lines'),tot=document.getElementById('tot'),acts=est.querySelector('.acts'),dl=est.querySelector('.dl'),fine=est.querySelector('.fine'),clear=document.getElementById('clear'),pr=document.getElementById('print'),send=document.getElementById('send');
-    est.querySelector('.dh b').textContent='Your estimate';
-    var sc=document.createElement('div');sc.className='pv-scroll';
-    var gl=document.createElement('div');gl.id='pv-glance';
-    var tools=document.createElement('div');tools.className='pv-tools';
-    tools.innerHTML='<button type="button" class="pv-full-btn">'+EXP+'View full estimate</button><button type="button" class="pv-clr">'+BIN+'Clear estimate</button>';
-    var cf=document.createElement('div');cf.className='pv-confirm';cf.setAttribute('role','alertdialog');
-    cf.innerHTML='<b>Remove all items from this estimate?</b><button type="button" class="no">Keep</button><button type="button" class="yes">Clear all</button>';
-    var start=document.createElement('div');start.className='pv-start';
-    start.innerHTML='<b>How to build your estimate</b><ol><li>Choose a tab in the price list: Cement, Iron rods or Binding wire.</li><li>Tap <b style="display:inline">Add</b> on each product you need.</li><li>Set the quantity with − and + or type it. Your total updates as you go.</li></ol>';
-    var dv=document.createElement('section');dv.className='pv-deliv';dv.innerHTML='<h4>Delivery</h4><p>Not included in the total. We confirm the delivery cost for your order and location after you send this estimate.</p>';
-    var ft=document.createElement('div');ft.className='pv-foot';
-    est.querySelector('.dm').after(tools);tools.after(cf);cf.after(sc);sc.append(gl,start,lines,dv,fine);dv.append(dl);
-    sc.after(ft);ft.append(tot,acts);
-    pr.innerHTML=DL+'Print or save as PDF';
-    [].slice.call(send.childNodes).forEach(function(n){if(n.nodeType===3&&/WhatsApp/.test(n.textContent))n.textContent='Send on WhatsApp'});
-    // clear with confirmation (Undo stays)
-    tools.querySelector('.pv-clr').addEventListener('click',function(){cf.classList.add('on');cf.querySelector('.no').focus()});
-    cf.querySelector('.no').addEventListener('click',function(){cf.classList.remove('on')});
-    cf.querySelector('.yes').addEventListener('click',function(){cf.classList.remove('on');clear.click()});
-    // full view on computers
-    var fs=document.createElement('div');fs.id='pv-fscrim';document.body.append(fs);
-    var fb=tools.querySelector('.pv-full-btn');
-    function full(on){est.classList.toggle('pv-full',on);h.classList.toggle('pv-fullon',on);fb.innerHTML=on?EXP+'Back to the price list':EXP+'View full estimate';document.body.style.overflow=on?'hidden':''}
-    fb.addEventListener('click',function(){full(!est.classList.contains('pv-full'))});
-    fs.addEventListener('click',function(){full(false)});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&est.classList.contains('pv-full'))full(false)});
-    // grouping
-    var SEC=[{k:'cem',no:'01',name:'Cement',subs:[{k:'cem'}]},{k:'rod',no:'02',name:'Iron rods',subs:[{k:'pc',name:'Single pieces'},{k:'ton',name:'By the ton'}]},{k:'wire',no:'03',name:'Binding wire',subs:[{k:'wire'}]}];
-    var kind=function(id,ln){if(id[0]==='c')return 'cem';if(id[0]==='j')return 'ton';if(/per roll/.test(ln.textContent))return 'wire';return 'pc'};
-    var num=function(t){return parseFloat(String(t).replace(/[^0-9.]/g,''))||0};
-    var fmt=function(n){return 'GH₵'+n.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2})};
-    var U={cem:['bag','bags'],pc:['rod','rods'],ton:['ton','tons'],wire:['roll','rolls']};
-    var qtxt=function(k,n){return n+' '+U[k][n===1?0:1]};
-    var shut={};var lo,busy=false;
-    function shape(){
-      if(busy)return;busy=true;if(lo)lo.disconnect();
-      var L=[].slice.call(lines.querySelectorAll('.ln'));
-      var by={cem:[],pc:[],ton:[],wire:[]},qn={cem:0,pc:0,ton:0,wire:0},am={cem:0,pc:0,ton:0,wire:0};
-      L.forEach(function(ln){var inp=ln.querySelector('input[data-qty]');var k=kind(inp?inp.dataset.qty:'',ln);by[k].push(ln);
-        var n=inp?num(inp.value):0;qn[k]+=n;am[k]+=num(ln.querySelector('.amt').textContent);
-        var qd=ln.querySelector('.qty');if(qd&&!qd.querySelector('.u')){var u=document.createElement('span');u.className='u';u.textContent=U[k][n===1?0:1];qd.append(u)}});
-      [].slice.call(lines.children).forEach(function(c){if(!c.classList.contains('ln'))c.classList.contains('empty')||c.remove()});
-      if(L.length){
-        SEC.forEach(function(S){var has=S.subs.some(function(x){return by[x.k].length});if(!has)return;
-          var box=document.createElement('section');box.className='pv-sec'+(shut[S.k]?' shut':'');
-          var q=S.subs.filter(function(x){return by[x.k].length}).map(function(x){return qtxt(x.k,qn[x.k])}).join(' · ');
-          var sub=S.subs.reduce(function(s,x){return s+am[x.k]},0);
-          box.innerHTML='<button type="button" class="pv-sh" aria-expanded="'+!shut[S.k]+'">'+CHEV+'<span class="no">'+S.no+'</span><span class="nmw"><span class="nmx">'+S.name+'</span><span class="qx">'+q+'</span></span><span class="sx">'+fmt(sub)+'</span></button><div class="pv-body"></div>';
-          var body=box.querySelector('.pv-body');
-          S.subs.forEach(function(x){if(!by[x.k].length)return;
-            if(x.name){var hd=document.createElement('div');hd.className='pv-sub';hd.innerHTML=x.name+'<span>'+qtxt(x.k,qn[x.k])+'</span>';body.append(hd)}
-            by[x.k].forEach(function(ln){body.append(ln)});
-            if(x.name){var st=document.createElement('div');st.className='pv-st';st.innerHTML='<span>'+x.name+' subtotal</span><b>'+fmt(am[x.k])+'</b>';body.append(st)}});
-          var all=document.createElement('div');all.className='pv-st all';all.innerHTML='<span>'+S.name+' subtotal</span><b>'+fmt(sub)+'</b>';body.append(all);
-          box.querySelector('.pv-sh').addEventListener('click',function(){shut[S.k]=!shut[S.k];box.classList.toggle('shut',shut[S.k]);this.setAttribute('aria-expanded',!shut[S.k])});
-          lines.append(box)});
-      }
-      var tiles=[];
-      if(qn.cem)tiles.push([qn.cem,qn.cem===1?'bag of cement':'bags of cement']);
-      if(qn.pc)tiles.push([qn.pc,qn.pc===1?'individual rod':'individual rods']);
-      if(qn.ton)tiles.push([qn.ton,qn.ton===1?'ton of rods':'tons of rods']);
-      if(qn.wire)tiles.push([qn.wire,qn.wire===1?'roll of binding wire':'rolls of binding wire']);
-      gl.innerHTML=tiles.length?'<h4>Your order at a glance</h4><div class="t">'+tiles.map(function(t){return '<div><b>'+t[0]+'</b><span>'+t[1]+'</span></div>'}).join('')+'</div>':'';
-      start.style.display=L.length?'none':'';
-      tools.style.display=L.length?'':'none';if(!L.length)cf.classList.remove('on');
-      tot.querySelectorAll('div').forEach(function(d){var a=d.children[0],b=d.children[1];if(!a||!b)return;
-        if(a.textContent==='Materials')d.classList.add('pv-hide');
-        if(a.textContent==='Delivery'){b.textContent='To be confirmed';b.className='pv-tbc'}});
-      pr.disabled=!L.length;
-      if(lo)lo.observe(lines,{childList:true});busy=false;
-    }
-    lo=new MutationObserver(shape);lo.observe(lines,{childList:true});
-    new MutationObserver(function(){if(!busy)shape()}).observe(tot,{childList:true});
-    shape();
-    var bt=document.getElementById('barTxt');
-    function barTxt(){var m=/Estimate: (.+) \((\d+ items?)\)/.exec(bt.textContent);if(!m)return;bt.innerHTML='<small>'+m[2]+' in your estimate</small>'+m[1]}
-    new MutationObserver(function(){if(!bt.querySelector('small'))barTxt()}).observe(bt,{childList:true,characterData:true,subtree:true});barTxt();
-    // Quotation: logo, units, sections with subtotals, delivery "To be confirmed"
-    var Q=document.getElementById('quote'),qbusy=false,qo;
-    var GN={cem:'Cement',pc:'Iron rods, single pieces',ton:'Iron rods, by the ton',wire:'Binding wire'};
-    function quote(){if(qbusy)return;qbusy=true;if(qo)qo.disconnect();
-      var b=Q.querySelector('.q-brand');if(b&&!b.querySelector('img')){var i=document.createElement('img');i.src='/preview-assets/tcp-logo-primary-on-light.svg';i.alt='The Cement People';b.prepend(i)}
-      var tb=Q.querySelector('tbody');
-      if(tb&&!tb.dataset.pv&&!tb.querySelector('.q-empty')){tb.dataset.pv=1;var rows=[].slice.call(tb.querySelectorAll('tr'));var grp={cem:[],pc:[],ton:[],wire:[]},sum={cem:0,pc:0,ton:0,wire:0};
-        rows.forEach(function(tr){var d=tr.children[1],qc=tr.children[2];var t=d.querySelector('small')?d.querySelector('small').textContent:'';var n=num(qc.textContent);
-          var k=/^Cement/.test(t)?'cem':/Per Ton/.test(t)?'ton':/roll/.test(t)?'wire':'pc';
-          qc.textContent=qc.textContent+' '+U[k][n===1?0:1];grp[k].push(tr);sum[k]+=num(tr.children[4].textContent)});
-        ['cem','pc','ton','wire'].forEach(function(k){if(!grp[k].length)return;var g=document.createElement('tr');g.className='pv-gr';g.innerHTML='<td colspan="5">'+GN[k]+'</td>';tb.append(g);grp[k].forEach(function(tr){tb.append(tr)});
-          var s=document.createElement('tr');s.className='pv-qs';s.innerHTML='<td></td><td colspan="3">'+GN[k]+' subtotal</td><td class="r">'+fmt(sum[k])+'</td>';tb.append(s)})}
-      Q.querySelectorAll('.q-sum div, .q-to div').forEach(function(d){var a=d.children[0],v=d.children[1];if(!a||!v)return;if(/^Delivery$/.test(a.textContent.trim())&&/Quoted/.test(v.textContent))v.textContent=/separately$/.test(v.textContent)?'To be confirmed':'To be confirmed after you send this estimate'});
-      if(qo)qo.observe(Q,{childList:true,subtree:true});qbusy=false}
-    qo=new MutationObserver(quote);qo.observe(Q,{childList:true,subtree:true});quote();
-  });
-})();
-</script>
-
-</head>
+<link rel="stylesheet" href="/_astro/index.DA6NKFzL.css"></head>
 <body>
 
 <header><div class="hin">
-<a class="brand" href="#home"><svg viewBox="0 0 59 38" aria-hidden="true"><rect x="0" y="26" width="28" height="12" rx="1" fill="currentColor"></rect><rect x="31" y="26" width="28" height="12" rx="1" fill="currentColor"></rect><rect x="17" y="13" width="42" height="12" rx="1" fill="currentColor"></rect><rect x="31" y="0" width="28" height="12" rx="1" fill="#f2c300"></rect></svg><span>The Cement People</span></a>
+<a class="brand" href="#home"><picture><source media="(max-width:899px)" srcset="/brand/tcp-logo-horizontal-on-light.svg" width="592" height="100"><img src="/brand/tcp-logo-primary-on-light.svg" alt="The Cement People" width="734" height="275"></picture></a>
 <nav id="nav"><a href="#home">Home</a><a href="#products">Products</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
-<a class="wa" data-wa href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path><path d="M9 8.5c.3 3 2.5 5.2 6 6.5l1.2-1.6-2-1-1 .8c-.9-.4-1.6-1.1-2-2l.8-1-1-2z" fill="currentColor"></path></svg><span class="long">Enquire on WhatsApp</span><span class="short">Enquire</span></a>
 <button id="menu" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path></svg></button>
 </div></header>
 
@@ -411,7 +48,14 @@ html[data-e=new] .pv-body{border-radius:0 0 var(--r-panel) var(--r-panel)}
 <source media="(max-width:899px)" srcset="/images/hero/hero-phone-480.webp 480w, /images/hero/hero-phone-780.webp 780w, /images/hero/hero-phone-1024.webp 1024w" sizes="100vw" width="1024" height="1280">
 <img src="/images/hero/hero-desktop-1440.webp" srcset="/images/hero/hero-desktop-960.webp 960w, /images/hero/hero-desktop-1440.webp 1440w, /images/hero/hero-desktop-1920.webp 1920w, /images/hero/hero-desktop-2560.webp 2560w" sizes="(min-width:900px) 65vw, 100vw" width="2560" height="1440" alt="Bags of Supacem, Dzata and Ghacem cement beside strapped bundles of iron rods and coils of binding wire" fetchpriority="high">
 </picture>
-<div class="htx"><p class="kick">Building materials supplier</p><h1>Materials for stronger construction.</h1><p class="lead">Cement, iron rods and binding wire, delivered to your site.</p><div class="ctas"><a class="cta" href="#products">View products</a><a class="btn2" href="tel:+233558463468" aria-label="Call us on 055 846 3468"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Call us</a></div></div>
+<div class="htx"><p class="kick">Building materials supplier</p><h1>Materials for stronger construction.</h1><p class="lead">Cement, iron rods and binding wire, delivered to your site.</p><div class="ctas"><a class="cta" href="#products">View products</a><div class="enq">
+<button type="button" class="enq-btn btn2" aria-expanded="false" aria-controls="enq-hero">Enquire<svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"></path></svg></button>
+<div class="enq-menu" id="enq-hero" hidden>
+<span class="grab" aria-hidden="true"></span>
+<a data-wa href="#contact" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path><path d="M9 8.5c.3 3 2.5 5.2 6 6.5l1.2-1.6-2-1-1 .8c-.9-.4-1.6-1.1-2-2l.8-1-1-2z" fill="currentColor"></path></svg><span>Chat on WhatsApp<small>Send us a message</small></span></a>
+<a href="tel:+233558463468"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Call 055 846 3468<small>Monday–Saturday, 7:00 am–5:00 pm</small></span></a>
+</div>
+</div></div></div>
 </section>
 
 <main id="products">
@@ -420,45 +64,72 @@ html[data-e=new] .pv-body{border-radius:0 0 var(--r-panel) var(--r-panel)}
 <p class="lead">Add what you need to build your estimate. Prices are per unit, in Ghana cedis.</p>
 <div class="tools">
 <input type="search" id="q" placeholder="Search materials" aria-label="Search materials">
-<div class="tabs" id="tabs"><button data-cat="Cement" aria-pressed="true">Cement</button><button data-cat="Iron Rods (Single Piece)" aria-pressed="false">Iron Rods (Single Piece)</button><button data-cat="Iron Rods (Per Ton)" aria-pressed="false">Iron Rods (Per Ton)</button></div>
+<div class="tabs" id="tabs"><button data-cat="Cement" aria-pressed="true">Cement</button><button data-cat="Iron Rods (Single Piece)" aria-pressed="false">Iron Rods (Single Piece)</button><button data-cat="Iron Rods (Per Ton)" aria-pressed="false">Iron Rods (Per Ton)</button><button data-cat="Binding Wire" aria-pressed="false">Binding Wire</button></div>
 <p class="hint">Swipe left or right to switch category.</p>
 </div>
-<div id="list" class="snap"><div class="slide"><section><h3><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M6 5h16l3 5v14H3V10z" fill="currentColor"/><rect x="8" y="12" width="12" height="8" fill="#f2c300"/></svg>Cement</h3><div class="row has-img"><img class="thumb" src="/images/products/supacem-32-5.webp" srcset="/images/products/supacem-32-5-80.webp 80w, /images/products/supacem-32-5-96.webp 96w, /images/products/supacem-32-5-120.webp 120w, /images/products/supacem-32-5-160.webp 160w, /images/products/supacem-32-5-192.webp 192w, /images/products/supacem-32-5-240.webp 240w, /images/products/supacem-32-5-288.webp 288w, /images/products/supacem-32-5.webp 360w" sizes="(max-width:560px) 80px, 96px" alt="Supacem Supa Fast 32.5R bag, green and kraft brown" width="96" height="96"><div class="nm">Supacem 32.5R<small>per 50 kg bag</small></div><div class="pr">GH₵75.00</div><button class="add" data-inc="c1" aria-label="Add Supacem 32.5R to estimate">Add</button></div><div class="row has-img"><img class="thumb" src="/images/products/supacem-42-5.webp" srcset="/images/products/supacem-42-5-80.webp 80w, /images/products/supacem-42-5-96.webp 96w, /images/products/supacem-42-5-120.webp 120w, /images/products/supacem-42-5-160.webp 160w, /images/products/supacem-42-5-192.webp 192w, /images/products/supacem-42-5-240.webp 240w, /images/products/supacem-42-5-288.webp 288w, /images/products/supacem-42-5.webp 360w" sizes="(max-width:560px) 80px, 96px" alt="Supacem Supa Power 42.5R bag, kraft brown with black panel" width="96" height="96"><div class="nm">Supacem 42.5R<small>per 50 kg bag</small></div><div class="pr">GH₵100.00</div><button class="add" data-inc="c2" aria-label="Add Supacem 42.5R to estimate">Add</button></div><div class="row has-img"><img class="thumb" src="/images/products/dzata-42-5.webp" srcset="/images/products/dzata-42-5-80.webp 80w, /images/products/dzata-42-5-96.webp 96w, /images/products/dzata-42-5-120.webp 120w, /images/products/dzata-42-5-160.webp 160w, /images/products/dzata-42-5-192.webp 192w, /images/products/dzata-42-5-240.webp 240w, /images/products/dzata-42-5-288.webp 288w, /images/products/dzata-42-5.webp 360w" sizes="(max-width:560px) 80px, 96px" alt="Dzata 42.5R bag, kraft brown with black and white lion panel" width="96" height="96"><div class="nm">Dzata 42.5R<small>per 50 kg bag</small></div><div class="pr">GH₵110.00</div><button class="add" data-inc="c3" aria-label="Add Dzata 42.5R to estimate">Add</button></div><div class="row has-img"><img class="thumb" src="/images/products/ghacem-waterproof-42-5.webp" srcset="/images/products/ghacem-waterproof-42-5-80.webp 80w, /images/products/ghacem-waterproof-42-5-96.webp 96w, /images/products/ghacem-waterproof-42-5-120.webp 120w, /images/products/ghacem-waterproof-42-5-160.webp 160w, /images/products/ghacem-waterproof-42-5-192.webp 192w, /images/products/ghacem-waterproof-42-5-240.webp 240w, /images/products/ghacem-waterproof-42-5-288.webp 288w, /images/products/ghacem-waterproof-42-5.webp 360w" sizes="(max-width:560px) 80px, 96px" alt="Ghacem Super Strong Waterproof 42.5N bag, black and yellow panel with blue waves" width="96" height="96"><div class="nm">Ghacem Waterproof 42.5N<small>per 50 kg bag</small></div><div class="pr">GH₵120.00</div><button class="add" data-inc="c4" aria-label="Add Ghacem Waterproof 42.5N to estimate">Add</button></div></section></div><div class="slide"><section><img class="banner" src="/images/products/iron-rods-1086.webp" srcset="/images/products/iron-rods-720.webp 720w, /images/products/iron-rods-1086.webp 1086w, /images/products/iron-rods-1440.webp 1440w" sizes="(min-width:1100px) 652px, (min-width:900px) calc(100vw - 448px), calc(100vw - 32px)" alt="" width="1086" height="363" fetchpriority="low" onerror="this.closest('section').classList.add('nobanner')"><h3><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="5" width="24" height="4" rx="2" fill="currentColor"/><rect x="2" y="12" width="24" height="4" rx="2" fill="currentColor"/><rect x="2" y="19" width="24" height="4" rx="2" fill="currentColor"/><rect x="11" y="3" width="5" height="22" fill="#f2c300"/></svg>Iron Rods (Single Piece)</h3><p class="cat-note">Sold by the piece. Each rod is 30 ft long.</p><div class="row"><div class="nm"><span class="rn">Iron rod <b class="sz">16 mm</b></span><small>per 30 ft rod</small></div><div class="pr">GH₵102.00</div><button class="add" data-inc="i1" aria-label="Add Iron rod 16 mm to estimate">Add</button></div><div class="row"><div class="nm"><span class="rn">Iron rod <b class="sz">14 mm</b></span><small>per 30 ft rod</small></div><div class="pr">GH₵75.00</div><button class="add" data-inc="i2" aria-label="Add Iron rod 14 mm to estimate">Add</button></div><div class="row"><div class="nm"><span class="rn">Iron rod <b class="sz">12 mm</b></span><small>per 30 ft rod</small></div><div class="pr">GH₵58.00</div><button class="add" data-inc="i3" aria-label="Add Iron rod 12 mm to estimate">Add</button></div><div class="row"><div class="nm"><span class="rn">Iron rod <b class="sz">11.5 mm</b></span><small>per 30 ft rod</small></div><div class="pr">GH₵48.00</div><button class="add" data-inc="i4" aria-label="Add Iron rod 11.5 mm to estimate">Add</button></div><div class="row"><div class="nm"><span class="rn">Iron rod <b class="sz">10 mm</b></span><small>per 30 ft rod</small></div><div class="pr">GH₵40.00</div><button class="add" data-inc="i5" aria-label="Add Iron rod 10 mm to estimate">Add</button></div><div class="row"><div class="nm"><span class="rn">Iron rod <b class="sz">8 mm</b></span><small>per 30 ft rod</small></div><div class="pr">GH₵25.00</div><button class="add" data-inc="i6" aria-label="Add Iron rod 8 mm to estimate">Add</button></div><h4>Binding wire</h4><div class="row has-img"><img class="thumb" src="/images/products/binding-wire.webp" srcset="/images/products/binding-wire-80.webp 80w, /images/products/binding-wire-96.webp 96w, /images/products/binding-wire-120.webp 120w, /images/products/binding-wire-160.webp 160w, /images/products/binding-wire-192.webp 192w, /images/products/binding-wire-240.webp 240w, /images/products/binding-wire-288.webp 288w, /images/products/binding-wire.webp 360w" sizes="(max-width:560px) 80px, 96px" alt="Coil of black annealed binding wire" width="96" height="96"><div class="nm">Binding wire<small>per roll</small></div><div class="pr">GH₵60.00</div><button class="add" data-inc="i8" aria-label="Add Binding wire to estimate">Add</button></div></section></div><div class="slide"><section><img class="banner" src="/images/products/iron-rods-1086.webp" srcset="/images/products/iron-rods-720.webp 720w, /images/products/iron-rods-1086.webp 1086w, /images/products/iron-rods-1440.webp 1440w" sizes="(min-width:1100px) 652px, (min-width:900px) calc(100vw - 448px), calc(100vw - 32px)" alt="" width="1086" height="363" fetchpriority="low" onerror="this.closest('section').classList.add('nobanner')"><h3><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="5" width="24" height="4" rx="2" fill="currentColor"/><rect x="2" y="12" width="24" height="4" rx="2" fill="currentColor"/><rect x="2" y="19" width="24" height="4" rx="2" fill="currentColor"/><rect x="11" y="3" width="5" height="22" fill="#f2c300"/></svg>Iron Rods (Per Ton)</h3><p class="cat-note">Available in all listed sizes.</p><p class="cat-price"><b>GH₵7,000.00</b> per ton, all sizes</p><div class="row one"><div class="nm"><span class="rn">Iron rod <b class="sz">16 mm</b></span><small>per ton</small></div><div class="pr"><span class="vh">GH₵7,000.00</span></div><button class="add" data-inc="j1" aria-label="Add Iron rod 16 mm to estimate">Add</button></div><div class="row one"><div class="nm"><span class="rn">Iron rod <b class="sz">14 mm</b></span><small>per ton</small></div><div class="pr"><span class="vh">GH₵7,000.00</span></div><button class="add" data-inc="j2" aria-label="Add Iron rod 14 mm to estimate">Add</button></div><div class="row one"><div class="nm"><span class="rn">Iron rod <b class="sz">12 mm</b></span><small>per ton</small></div><div class="pr"><span class="vh">GH₵7,000.00</span></div><button class="add" data-inc="j3" aria-label="Add Iron rod 12 mm to estimate">Add</button></div><div class="row one"><div class="nm"><span class="rn">Iron rod <b class="sz">11.5 mm</b></span><small>per ton</small></div><div class="pr"><span class="vh">GH₵7,000.00</span></div><button class="add" data-inc="j4" aria-label="Add Iron rod 11.5 mm to estimate">Add</button></div><div class="row one"><div class="nm"><span class="rn">Iron rod <b class="sz">10 mm</b></span><small>per ton</small></div><div class="pr"><span class="vh">GH₵7,000.00</span></div><button class="add" data-inc="j5" aria-label="Add Iron rod 10 mm to estimate">Add</button></div><div class="row one"><div class="nm"><span class="rn">Iron rod <b class="sz">8 mm</b></span><small>per ton</small></div><div class="pr"><span class="vh">GH₵7,000.00</span></div><button class="add" data-inc="j6" aria-label="Add Iron rod 8 mm to estimate">Add</button></div></section></div></div>
+<div id="list" class="snap"><div class="slide"><section><h3><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M6 5h16l3 5v14H3V10z" fill="currentColor"/><rect x="8" y="12" width="12" height="8" fill="#ff9802"/></svg>Cement</h3><div class="row has-img"><img class="thumb" src="/images/products/supacem-32-5.webp" srcset="/images/products/supacem-32-5-80.webp 80w, /images/products/supacem-32-5-96.webp 96w, /images/products/supacem-32-5-120.webp 120w, /images/products/supacem-32-5-160.webp 160w, /images/products/supacem-32-5-192.webp 192w, /images/products/supacem-32-5-240.webp 240w, /images/products/supacem-32-5-288.webp 288w, /images/products/supacem-32-5.webp 360w" sizes="(max-width:560px) 80px, 96px" alt="Supacem Supa Fast 32.5R bag, green and kraft brown" width="96" height="96"><div class="nm">Supacem 32.5R<small>per 50 kg bag</small></div><div class="pr">GH₵75.00</div><button class="add" data-inc="c1" aria-label="Add Supacem 32.5R to estimate">Add</button></div><div class="row has-img"><img class="thumb" src="/images/products/supacem-42-5.webp" srcset="/images/products/supacem-42-5-80.webp 80w, /images/products/supacem-42-5-96.webp 96w, /images/products/supacem-42-5-120.webp 120w, /images/products/supacem-42-5-160.webp 160w, /images/products/supacem-42-5-192.webp 192w, /images/products/supacem-42-5-240.webp 240w, /images/products/supacem-42-5-288.webp 288w, /images/products/supacem-42-5.webp 360w" sizes="(max-width:560px) 80px, 96px" alt="Supacem Supa Power 42.5R bag, kraft brown with black panel" width="96" height="96"><div class="nm">Supacem 42.5R<small>per 50 kg bag</small></div><div class="pr">GH₵100.00</div><button class="add" data-inc="c2" aria-label="Add Supacem 42.5R to estimate">Add</button></div><div class="row has-img"><img class="thumb" src="/images/products/dzata-42-5.webp" srcset="/images/products/dzata-42-5-80.webp 80w, /images/products/dzata-42-5-96.webp 96w, /images/products/dzata-42-5-120.webp 120w, /images/products/dzata-42-5-160.webp 160w, /images/products/dzata-42-5-192.webp 192w, /images/products/dzata-42-5-240.webp 240w, /images/products/dzata-42-5-288.webp 288w, /images/products/dzata-42-5.webp 360w" sizes="(max-width:560px) 80px, 96px" alt="Dzata 42.5R bag, kraft brown with black and white lion panel" width="96" height="96"><div class="nm">Dzata 42.5R<small>per 50 kg bag</small></div><div class="pr">GH₵110.00</div><button class="add" data-inc="c3" aria-label="Add Dzata 42.5R to estimate">Add</button></div><div class="row has-img"><img class="thumb" src="/images/products/ghacem-waterproof-42-5.webp" srcset="/images/products/ghacem-waterproof-42-5-80.webp 80w, /images/products/ghacem-waterproof-42-5-96.webp 96w, /images/products/ghacem-waterproof-42-5-120.webp 120w, /images/products/ghacem-waterproof-42-5-160.webp 160w, /images/products/ghacem-waterproof-42-5-192.webp 192w, /images/products/ghacem-waterproof-42-5-240.webp 240w, /images/products/ghacem-waterproof-42-5-288.webp 288w, /images/products/ghacem-waterproof-42-5.webp 360w" sizes="(max-width:560px) 80px, 96px" alt="Ghacem Super Strong Waterproof 42.5N bag, black and yellow panel with blue waves" width="96" height="96"><div class="nm">Ghacem Waterproof 42.5N<small>per 50 kg bag</small></div><div class="pr">GH₵120.00</div><button class="add" data-inc="c4" aria-label="Add Ghacem Waterproof 42.5N to estimate">Add</button></div></section></div><div class="slide"><section><img class="banner" src="/images/products/iron-rods-1086.webp" srcset="/images/products/iron-rods-720.webp 720w, /images/products/iron-rods-1086.webp 1086w, /images/products/iron-rods-1440.webp 1440w" sizes="(min-width:1100px) 652px, (min-width:900px) calc(100vw - 448px), calc(100vw - 32px)" alt="" width="1086" height="363" fetchpriority="low" onerror="this.closest('section').classList.add('nobanner')"><h3><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="5" width="24" height="4" rx="2" fill="currentColor"/><rect x="2" y="12" width="24" height="4" rx="2" fill="currentColor"/><rect x="2" y="19" width="24" height="4" rx="2" fill="currentColor"/><rect x="11" y="3" width="5" height="22" fill="#ff9802"/></svg>Iron Rods (Single Piece)</h3><p class="cat-note">Sold by the piece. Each rod is 30 ft long.</p><div class="row"><div class="nm"><span class="rn">Iron rod <b class="sz">16 mm</b></span><small>per 30 ft rod</small></div><div class="pr">GH₵102.00</div><button class="add" data-inc="i1" aria-label="Add Iron rod 16 mm to estimate">Add</button></div><div class="row"><div class="nm"><span class="rn">Iron rod <b class="sz">14 mm</b></span><small>per 30 ft rod</small></div><div class="pr">GH₵75.00</div><button class="add" data-inc="i2" aria-label="Add Iron rod 14 mm to estimate">Add</button></div><div class="row"><div class="nm"><span class="rn">Iron rod <b class="sz">12 mm</b></span><small>per 30 ft rod</small></div><div class="pr">GH₵58.00</div><button class="add" data-inc="i3" aria-label="Add Iron rod 12 mm to estimate">Add</button></div><div class="row"><div class="nm"><span class="rn">Iron rod <b class="sz">11.5 mm</b></span><small>per 30 ft rod</small></div><div class="pr">GH₵48.00</div><button class="add" data-inc="i4" aria-label="Add Iron rod 11.5 mm to estimate">Add</button></div><div class="row"><div class="nm"><span class="rn">Iron rod <b class="sz">10 mm</b></span><small>per 30 ft rod</small></div><div class="pr">GH₵40.00</div><button class="add" data-inc="i5" aria-label="Add Iron rod 10 mm to estimate">Add</button></div><div class="row"><div class="nm"><span class="rn">Iron rod <b class="sz">8 mm</b></span><small>per 30 ft rod</small></div><div class="pr">GH₵25.00</div><button class="add" data-inc="i6" aria-label="Add Iron rod 8 mm to estimate">Add</button></div></section></div><div class="slide"><section><img class="banner" src="/images/products/iron-rods-1086.webp" srcset="/images/products/iron-rods-720.webp 720w, /images/products/iron-rods-1086.webp 1086w, /images/products/iron-rods-1440.webp 1440w" sizes="(min-width:1100px) 652px, (min-width:900px) calc(100vw - 448px), calc(100vw - 32px)" alt="" width="1086" height="363" fetchpriority="low" onerror="this.closest('section').classList.add('nobanner')"><h3><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="2" y="5" width="24" height="4" rx="2" fill="currentColor"/><rect x="2" y="12" width="24" height="4" rx="2" fill="currentColor"/><rect x="2" y="19" width="24" height="4" rx="2" fill="currentColor"/><rect x="11" y="3" width="5" height="22" fill="#ff9802"/></svg>Iron Rods (Per Ton)</h3><p class="cat-note">Available in all listed sizes.</p><p class="cat-price"><b>GH₵7,000.00</b> per ton, all sizes</p><div class="row one"><div class="nm"><span class="rn">Iron rod <b class="sz">16 mm</b></span><small>per ton</small></div><div class="pr"><span class="vh">GH₵7,000.00</span></div><button class="add" data-inc="j1" aria-label="Add Iron rod 16 mm to estimate">Add</button></div><div class="row one"><div class="nm"><span class="rn">Iron rod <b class="sz">14 mm</b></span><small>per ton</small></div><div class="pr"><span class="vh">GH₵7,000.00</span></div><button class="add" data-inc="j2" aria-label="Add Iron rod 14 mm to estimate">Add</button></div><div class="row one"><div class="nm"><span class="rn">Iron rod <b class="sz">12 mm</b></span><small>per ton</small></div><div class="pr"><span class="vh">GH₵7,000.00</span></div><button class="add" data-inc="j3" aria-label="Add Iron rod 12 mm to estimate">Add</button></div><div class="row one"><div class="nm"><span class="rn">Iron rod <b class="sz">11.5 mm</b></span><small>per ton</small></div><div class="pr"><span class="vh">GH₵7,000.00</span></div><button class="add" data-inc="j4" aria-label="Add Iron rod 11.5 mm to estimate">Add</button></div><div class="row one"><div class="nm"><span class="rn">Iron rod <b class="sz">10 mm</b></span><small>per ton</small></div><div class="pr"><span class="vh">GH₵7,000.00</span></div><button class="add" data-inc="j5" aria-label="Add Iron rod 10 mm to estimate">Add</button></div><div class="row one"><div class="nm"><span class="rn">Iron rod <b class="sz">8 mm</b></span><small>per ton</small></div><div class="pr"><span class="vh">GH₵7,000.00</span></div><button class="add" data-inc="j6" aria-label="Add Iron rod 8 mm to estimate">Add</button></div></section></div><div class="slide"><section><h3><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="10" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="14" cy="14" r="4.5" fill="none" stroke="#ff9802" stroke-width="3"/></svg>Binding Wire</h3><div class="row has-img"><img class="thumb" src="/images/products/binding-wire.webp" srcset="/images/products/binding-wire-80.webp 80w, /images/products/binding-wire-96.webp 96w, /images/products/binding-wire-120.webp 120w, /images/products/binding-wire-160.webp 160w, /images/products/binding-wire-192.webp 192w, /images/products/binding-wire-240.webp 240w, /images/products/binding-wire-288.webp 288w, /images/products/binding-wire.webp 360w" sizes="(max-width:560px) 80px, 96px" alt="Coil of black annealed binding wire" width="96" height="96"><div class="nm">Binding wire<small>per roll</small></div><div class="pr">GH₵60.00</div><button class="add" data-inc="i8" aria-label="Add Binding wire to estimate">Add</button></div></section></div></div>
 </div>
 
 <aside id="est" class="docket" aria-label="Your estimate">
 <button class="dclose noprint" id="dclose"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Back to products</button>
-<div class="dh"><b>Estimate</b><span id="ref"></span></div>
+<div class="dh"><b>Your estimate</b><span id="ref"></span></div>
 <div class="dm" id="date"></div>
+<div class="etools noprint" id="etools">
+<button type="button" class="etool" id="full"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>View full estimate</span></button>
+<button type="button" class="etool" id="clear"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Clear estimate</span></button>
+</div>
+<div class="eask noprint" id="clearAsk" role="alertdialog" aria-labelledby="clearQ" hidden>
+<b id="clearQ">Remove everything from this estimate?</b>
+<button type="button" id="clearNo">Keep estimate</button>
+<button type="button" class="yes" id="clearYes">Clear all</button>
+</div>
+<div class="escroll" id="escroll">
+<div id="glance"></div>
+<div class="estart" id="start"><b>How to build your estimate</b><ol><li>Choose a tab in the price list: Cement, Iron rods or Binding wire.</li><li>Tap <b>Add</b> on each product you need.</li><li>Set the quantity with − and +, or type it. Your total updates as you go.</li></ol></div>
 <div id="lines"></div>
-<label class="dl">Drop-off location<input type="text" id="loc" placeholder="Town or site address" autocomplete="street-address"></label>
+<section class="edeliv"><h3>Delivery</h3><p>Not included in the total. We confirm the delivery cost for your order and location after you send this estimate.</p>
+<label class="dl">Drop-off location<input type="text" id="loc" placeholder="Town or site address" autocomplete="street-address"></label></section>
+<p class="fine">Delivery cost depends on your order and drop-off location, and is agreed with us before delivery. Estimates are indicative; final prices and availability are confirmed with you.</p>
+</div>
+<div class="efoot">
 <div id="tot" class="tot"></div>
 <div class="acts noprint">
-<a class="cta off" id="send" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path><path d="M9 8.5c.3 3 2.5 5.2 6 6.5l1.2-1.6-2-1-1 .8c-.9-.4-1.6-1.1-2-2l.8-1-1-2z" fill="currentColor"></path></svg>Send my estimate on WhatsApp</a>
-<button class="ghost" id="print">Print or save as PDF</button>
-<button class="ghost" id="clear">Clear estimate</button>
+<a class="cta off" id="send" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path><path d="M9 8.5c.3 3 2.5 5.2 6 6.5l1.2-1.6-2-1-1 .8c-.9-.4-1.6-1.1-2-2l.8-1-1-2z" fill="currentColor"></path></svg>Send on WhatsApp</a>
+<button type="button" class="btn2" id="print"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>Print or save as PDF</button>
 </div>
-<p class="fine">Delivery cost depends on your order and drop-off location, and is agreed with us before delivery. Estimates are indicative; final prices and availability are confirmed with you.</p>
+</div>
 </aside>
+<div class="escrim" id="escrim" hidden></div>
 </main>
 
 <section class="sec alt" id="about"><div class="wrap"><h2 class="st">About us</h2><p>Based in Kasoa, The Cement People supplies cement, iron rods and binding wire for building projects of every size. Check prices online, put together an estimate, and we deliver the materials to your site.</p></div></section>
-<section class="sec" id="contact"><div class="wrap"><h2 class="st">Contact us</h2><p>Ready to order, or not sure what you need? Send us a message on WhatsApp or give us a call and we will help.</p><p><b>Address:</b> Krispol City Road, Krispol City, Kasoa, Central Region, Ghana<br><b>Landmark:</b> Near GOIL Filling Station<br><b>Plus Code:</b> GGMX+F9 Kasoa<br><b>Opening hours:</b> Monday–Saturday, 7:00 am–5:00 pm. Sunday closed.<br><b>Phone and WhatsApp:</b> <a href="tel:+233558463468" target="_blank" rel="noopener">055 846 3468</a><br><b>Email:</b> <a href="mailto:sales@thecementpeople.com">sales@thecementpeople.com</a><br><b>Delivery:</b> Kasoa and Greater Accra</p><a class="wa big" data-wa href="#contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path><path d="M9 8.5c.3 3 2.5 5.2 6 6.5l1.2-1.6-2-1-1 .8c-.9-.4-1.6-1.1-2-2l.8-1-1-2z" fill="currentColor"></path></svg><span>Enquire on WhatsApp</span></a></div></section>
+<section class="sec" id="contact"><div class="wrap"><h2 class="st">Contact us</h2><p>Ready to order, or not sure what you need? Send us a message on WhatsApp or give us a call and we will help.</p><p><b>Address:</b> Krispol City Road, Krispol City, Kasoa, Central Region, Ghana<br><b>Landmark:</b> Near GOIL Filling Station<br><b>Plus Code:</b> GGMX+F9 Kasoa<br><b>Opening hours:</b> Monday–Saturday, 7:00 am–5:00 pm. Sunday closed.<br><b>Phone and WhatsApp:</b> <a href="tel:+233558463468" target="_blank" rel="noopener">055 846 3468</a><br><b>Email:</b> <a href="mailto:sales@thecementpeople.com">sales@thecementpeople.com</a><br><b>Delivery:</b> Kasoa and Greater Accra</p><div class="enq">
+<button type="button" class="enq-btn cta big" aria-expanded="false" aria-controls="enq-contact">Enquire<svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"></path></svg></button>
+<div class="enq-menu" id="enq-contact" hidden>
+<span class="grab" aria-hidden="true"></span>
+<a data-wa href="#contact" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path><path d="M9 8.5c.3 3 2.5 5.2 6 6.5l1.2-1.6-2-1-1 .8c-.9-.4-1.6-1.1-2-2l.8-1-1-2z" fill="currentColor"></path></svg><span>Chat on WhatsApp<small>Send us a message</small></span></a>
+<a href="tel:+233558463468"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>Call 055 846 3468<small>Monday–Saturday, 7:00 am–5:00 pm</small></span></a>
+</div>
+</div></div></section>
 
 <footer class="foot"><div>
-<svg viewBox="0 0 59 38" aria-hidden="true"><rect x="0" y="26" width="28" height="12" rx="1" fill="#d9d9d6"></rect><rect x="31" y="26" width="28" height="12" rx="1" fill="#d9d9d6"></rect><rect x="17" y="13" width="42" height="12" rx="1" fill="#d9d9d6"></rect><rect x="31" y="0" width="28" height="12" rx="1" fill="#f2c300"></rect></svg>
-<p><b>The Cement People</b>Krispol City Road, Krispol City, Kasoa, Central Region, Ghana. Cement, iron rods and binding wire, delivered to your site. Prices in Ghana cedis (GH₵).</p>
+<img class="flogo" src="/brand/tcp-logo-horizontal-on-dark.svg" alt="The Cement People" width="592" height="100" loading="lazy">
+<p>Krispol City Road, Krispol City, Kasoa, Central Region, Ghana. Cement, iron rods and binding wire, delivered to your site. Prices in Ghana cedis (GH₵).</p>
 </div></footer>
 
 <div class="bar noprint" id="bar"><b id="barTxt"></b><button id="barBtn">View estimate</button></div>
 
 <section id="quote" aria-hidden="true"></section>
 
+<!-- The horizontal logo (public/brand/tcp-logo-horizontal-on-light.svg),
+     kept here as a symbol so the PDF quotation can draw it instantly with
+     by copying it into the quotation, without waiting for a download when printing. -->
+<svg class="sprite" aria-hidden="true" width="0" height="0" style="display:none"><symbol id="q-logo" viewBox="0 0 592.329 100"><path fill="#D27D02" fill-rule="evenodd" d="M28.874 21.126 L26.354 23.646 L23.646 26.354 L21.126 28.874 L0 50 L21.126 71.126 L23.646 73.646 L23.646 73.646 L26.354 76.354 L26.354 76.354 L50 100 L73.646 76.354 L73.646 76.354 L76.354 73.646 L78.874 71.126 L100 50 L78.874 28.874 L76.354 26.354 L73.646 23.646 L50 0Z M50 5.009 L66.137 21.146 L33.863 21.146Z M5.009 50 L21.146 33.863 L21.146 66.137Z M48.085 55.833 L29.463 74.455 L25.545 70.537 L44.167 51.915Z M53.918 50 L50 53.918 L46.082 50 L50 46.082Z M70.537 74.455 L51.915 55.833 L55.833 51.915 L74.455 70.537Z M76.354 31.394 L76.354 68.606 L57.748 50Z M70.537 25.545 L74.455 29.463 L55.833 48.085 L51.915 44.167Z M44.167 48.085 L25.545 29.463 L29.463 25.545 L48.085 44.167Z M23.646 31.394 L42.252 50 L23.646 68.606Z M34.519 26.771 L31.394 23.646 L68.606 23.646 L65.481 26.771Z M40.144 32.396 L37.019 29.271 L62.981 29.271 L59.856 32.396Z M45.457 37.708 L42.644 34.896 L57.356 34.896 L54.543 37.708Z M47.957 40.208 L52.043 40.208 L50 42.252Z M78.854 33.863 L94.991 50 L78.854 66.137Z M68.606 76.354 L31.394 76.354 L34.519 73.229 L65.481 73.229Z M62.981 70.729 L37.019 70.729 L40.144 67.604 L59.856 67.604Z M57.356 65.104 L42.644 65.104 L45.457 62.292 L54.543 62.292Z M47.957 59.792 L50 57.748 L52.043 59.792Z M66.137 78.854 L50 94.991 L33.863 78.854Z"></path><path fill="#131514" d="M481.814 50Q481.814 46.529 483.036 43.657Q484.257 40.786 486.443 38.686Q488.629 36.586 491.586 35.45Q494.543 34.314 497.971 34.314Q501.443 34.314 504.379 35.45Q507.314 36.586 509.5 38.686Q511.686 40.786 512.886 43.657Q514.086 46.529 514.086 50Q514.086 53.471 512.907 56.386Q511.729 59.3 509.564 61.443Q507.4 63.586 504.443 64.764Q501.486 65.943 497.971 65.943Q494.414 65.943 491.457 64.764Q488.5 63.586 486.336 61.443Q484.171 59.3 482.993 56.386Q481.814 53.471 481.814 50ZM294.743 49.7 292.943 65H285.314L290.157 33.5L302.929 51.8L315.743 33.5L320.586 65H312.957L311.157 49.7L302.929 62.214ZM172.471 35H179.714V65H172.471V52.443H159.571V65H152.329V35H159.571V45.929H172.471ZM374.329 35H381.314V66.5L360.571 48.114V65H353.629V33.5L374.329 51.886ZM428.414 35H438.829Q442.643 35 445.236 36.179Q447.829 37.357 449.157 39.543Q450.486 41.729 450.486 44.814Q450.486 47.814 449.157 50.021Q447.829 52.229 445.236 53.407Q442.643 54.586 438.829 54.586H435.657V65H428.414ZM520 35H530.414Q534.229 35 536.821 36.179Q539.414 37.357 540.743 39.543Q542.071 41.729 542.071 44.814Q542.071 47.814 540.743 50.021Q539.414 52.229 536.821 53.407Q534.229 54.586 530.414 54.586H527.243V65H520ZM259.9 35H279.829V40.957H266.843V46.314H278.971V52.143H266.843V59.043H279.829V65H259.9ZM456.4 35H476.329V40.957H463.343V46.314H475.471V52.143H463.343V59.043H476.329V65H456.4ZM326.5 35H346.429V40.957H333.443V46.314H345.571V52.143H333.443V59.043H346.429V65H326.5ZM187.3 35H207.229V40.957H194.243V46.314H206.371V52.143H194.243V59.043H207.229V65H187.3ZM571.9 35H591.829V40.957H578.843V46.314H590.971V52.143H578.843V59.043H591.829V65H571.9ZM234.743 50Q234.743 52.743 235.986 54.736Q237.229 56.729 239.264 57.757Q241.3 58.786 243.743 58.786Q245.886 58.786 247.514 58.229Q249.143 57.671 250.429 56.771Q251.714 55.871 252.7 54.843V62.643Q250.9 64.057 248.757 64.871Q246.614 65.686 243.314 65.686Q239.714 65.686 236.671 64.571Q233.629 63.457 231.443 61.357Q229.257 59.257 228.057 56.386Q226.857 53.514 226.857 50Q226.857 46.486 228.057 43.614Q229.257 40.743 231.443 38.643Q233.629 36.543 236.671 35.429Q239.714 34.314 243.314 34.314Q246.614 34.314 248.757 35.129Q250.9 35.943 252.7 37.357V45.157Q251.714 44.129 250.429 43.207Q249.143 42.286 247.514 41.75Q245.886 41.214 243.743 41.214Q241.3 41.214 239.264 42.243Q237.229 43.271 235.986 45.243Q234.743 47.214 234.743 50ZM124 41.471V35H147.743V41.471H139.471V65H132.229V41.471ZM385.943 41.471V35H409.686V41.471H401.414V65H394.171V41.471ZM547.986 35H555.229V58.786H567.271V65H547.986ZM489.486 50Q489.486 52.657 490.536 54.693Q491.586 56.729 493.493 57.886Q495.4 59.043 497.971 59.043Q500.5 59.043 502.407 57.886Q504.314 56.729 505.364 54.693Q506.414 52.657 506.414 50Q506.414 47.343 505.386 45.307Q504.357 43.271 502.471 42.114Q500.586 40.957 497.971 40.957Q495.4 40.957 493.493 42.114Q491.586 43.271 490.536 45.307Q489.486 47.343 489.486 50ZM435.657 40.957V48.629H438.829Q441.014 48.629 442.257 47.643Q443.5 46.657 443.5 44.814Q443.5 42.929 442.257 41.943Q441.014 40.957 438.829 40.957H435.657ZM527.243 48.629H530.414Q532.6 48.629 533.843 47.643Q535.086 46.657 535.086 44.814Q535.086 42.929 533.843 41.943Q532.6 40.957 530.414 40.957H527.243V48.629Z"></path></symbol></svg>
 
-<script type="application/json" id="tcp-data">{"currency":"GH₵","taxRate":0,"business":{"phone":"055 846 3468","whatsapp":"233558463468","town":"Kasoa, Ghana","website":"thecementpeople.com"},"products":[{"id":"c1","cat":"Cement","name":"Supacem 32.5R","unit":"50 kg bag","price":75,"img":"/images/products/supacem-32-5.webp","alt":"Supacem Supa Fast 32.5R bag, green and kraft brown"},{"id":"c2","cat":"Cement","name":"Supacem 42.5R","unit":"50 kg bag","price":100,"img":"/images/products/supacem-42-5.webp","alt":"Supacem Supa Power 42.5R bag, kraft brown with black panel"},{"id":"c3","cat":"Cement","name":"Dzata 42.5R","unit":"50 kg bag","price":110,"img":"/images/products/dzata-42-5.webp","alt":"Dzata 42.5R bag, kraft brown with black and white lion panel"},{"id":"c4","cat":"Cement","name":"Ghacem Waterproof 42.5N","unit":"50 kg bag","price":120,"img":"/images/products/ghacem-waterproof-42-5.webp","alt":"Ghacem Super Strong Waterproof 42.5N bag, black and yellow panel with blue waves"},{"id":"i1","cat":"Iron Rods (Single Piece)","name":"Iron rod 16 mm","unit":"30 ft rod","price":102,"size":"16 mm"},{"id":"i2","cat":"Iron Rods (Single Piece)","name":"Iron rod 14 mm","unit":"30 ft rod","price":75,"size":"14 mm"},{"id":"i3","cat":"Iron Rods (Single Piece)","name":"Iron rod 12 mm","unit":"30 ft rod","price":58,"size":"12 mm"},{"id":"i4","cat":"Iron Rods (Single Piece)","name":"Iron rod 11.5 mm","unit":"30 ft rod","price":48,"size":"11.5 mm"},{"id":"i5","cat":"Iron Rods (Single Piece)","name":"Iron rod 10 mm","unit":"30 ft rod","price":40,"size":"10 mm"},{"id":"i6","cat":"Iron Rods (Single Piece)","name":"Iron rod 8 mm","unit":"30 ft rod","price":25,"size":"8 mm"},{"id":"j1","cat":"Iron Rods (Per Ton)","name":"Iron rod 16 mm","unit":"ton","price":7000,"size":"16 mm"},{"id":"j2","cat":"Iron Rods (Per Ton)","name":"Iron rod 14 mm","unit":"ton","price":7000,"size":"14 mm"},{"id":"j3","cat":"Iron Rods (Per Ton)","name":"Iron rod 12 mm","unit":"ton","price":7000,"size":"12 mm"},{"id":"j4","cat":"Iron Rods (Per Ton)","name":"Iron rod 11.5 mm","unit":"ton","price":7000,"size":"11.5 mm"},{"id":"j5","cat":"Iron Rods (Per Ton)","name":"Iron rod 10 mm","unit":"ton","price":7000,"size":"10 mm"},{"id":"j6","cat":"Iron Rods (Per Ton)","name":"Iron rod 8 mm","unit":"ton","price":7000,"size":"8 mm"},{"id":"i8","cat":"Iron Rods (Single Piece)","sub":"Binding wire","name":"Binding wire","unit":"roll","price":60,"img":"/images/products/binding-wire.webp","alt":"Coil of black annealed binding wire"}],"banners":{"rods":{"src":"/images/products/iron-rods-1086.webp","srcset":"/images/products/iron-rods-720.webp 720w, /images/products/iron-rods-1086.webp 1086w, /images/products/iron-rods-1440.webp 1440w","w":1086,"h":363}},"categoryInfo":{"Iron Rods (Single Piece)":{"banner":"rods","note":"Sold by the piece. Each rod is 30 ft long."},"Iron Rods (Per Ton)":{"banner":"rods","note":"Available in all listed sizes."}}}</script><script>/* PREVIEW ONLY: in the proposed estimate, binding wire is its own category (fix at the source) */
-if(new URLSearchParams(location.search).get('e')!=='current'){var D=document.getElementById('tcp-data'),J=JSON.parse(D.textContent);J.products.forEach(function(p){if(p.id==='i8'){p.cat='Binding Wire';delete p.sub}});D.textContent=JSON.stringify(J)}</script>
 
-<script src="/scripts/quote-engine.js?v=5e05ea2596"></script>
+<script type="application/json" id="tcp-data">{"currency":"GH₵","taxRate":0,"business":{"phone":"055 846 3468","whatsapp":"233558463468","town":"Kasoa, Ghana","website":"thecementpeople.com"},"products":[{"id":"c1","cat":"Cement","name":"Supacem 32.5R","unit":"50 kg bag","price":75,"img":"/images/products/supacem-32-5.webp","alt":"Supacem Supa Fast 32.5R bag, green and kraft brown"},{"id":"c2","cat":"Cement","name":"Supacem 42.5R","unit":"50 kg bag","price":100,"img":"/images/products/supacem-42-5.webp","alt":"Supacem Supa Power 42.5R bag, kraft brown with black panel"},{"id":"c3","cat":"Cement","name":"Dzata 42.5R","unit":"50 kg bag","price":110,"img":"/images/products/dzata-42-5.webp","alt":"Dzata 42.5R bag, kraft brown with black and white lion panel"},{"id":"c4","cat":"Cement","name":"Ghacem Waterproof 42.5N","unit":"50 kg bag","price":120,"img":"/images/products/ghacem-waterproof-42-5.webp","alt":"Ghacem Super Strong Waterproof 42.5N bag, black and yellow panel with blue waves"},{"id":"i1","cat":"Iron Rods (Single Piece)","name":"Iron rod 16 mm","unit":"30 ft rod","price":102,"size":"16 mm"},{"id":"i2","cat":"Iron Rods (Single Piece)","name":"Iron rod 14 mm","unit":"30 ft rod","price":75,"size":"14 mm"},{"id":"i3","cat":"Iron Rods (Single Piece)","name":"Iron rod 12 mm","unit":"30 ft rod","price":58,"size":"12 mm"},{"id":"i4","cat":"Iron Rods (Single Piece)","name":"Iron rod 11.5 mm","unit":"30 ft rod","price":48,"size":"11.5 mm"},{"id":"i5","cat":"Iron Rods (Single Piece)","name":"Iron rod 10 mm","unit":"30 ft rod","price":40,"size":"10 mm"},{"id":"i6","cat":"Iron Rods (Single Piece)","name":"Iron rod 8 mm","unit":"30 ft rod","price":25,"size":"8 mm"},{"id":"j1","cat":"Iron Rods (Per Ton)","name":"Iron rod 16 mm","unit":"ton","price":7000,"size":"16 mm"},{"id":"j2","cat":"Iron Rods (Per Ton)","name":"Iron rod 14 mm","unit":"ton","price":7000,"size":"14 mm"},{"id":"j3","cat":"Iron Rods (Per Ton)","name":"Iron rod 12 mm","unit":"ton","price":7000,"size":"12 mm"},{"id":"j4","cat":"Iron Rods (Per Ton)","name":"Iron rod 11.5 mm","unit":"ton","price":7000,"size":"11.5 mm"},{"id":"j5","cat":"Iron Rods (Per Ton)","name":"Iron rod 10 mm","unit":"ton","price":7000,"size":"10 mm"},{"id":"j6","cat":"Iron Rods (Per Ton)","name":"Iron rod 8 mm","unit":"ton","price":7000,"size":"8 mm"},{"id":"i8","cat":"Binding Wire","name":"Binding wire","unit":"roll","price":60,"img":"/images/products/binding-wire.webp","alt":"Coil of black annealed binding wire"}],"banners":{"rods":{"src":"/images/products/iron-rods-1086.webp","srcset":"/images/products/iron-rods-720.webp 720w, /images/products/iron-rods-1086.webp 1086w, /images/products/iron-rods-1440.webp 1440w","w":1086,"h":363}},"categoryInfo":{"Iron Rods (Single Piece)":{"banner":"rods","note":"Sold by the piece. Each rod is 30 ft long."},"Iron Rods (Per Ton)":{"banner":"rods","note":"Available in all listed sizes."}}}</script>
+
+<script src="/scripts/quote-engine.js?v=99e30ef95a"></script>
 
 </body>
 </html>
