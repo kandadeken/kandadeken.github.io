@@ -2,18 +2,19 @@
 <html lang="en">
 <head><meta name="robots" content="noindex, nofollow">
 <meta charset="utf-8">
-<!-- Dark mode (17 Nov 2026): choose light or dark before anything is drawn.
-     The customer's own choice (moon/sun button, remembered on this device)
-     wins; otherwise the phone's or computer's setting, followed live. -->
+<!-- Dark mode (17 Nov 2026): light mode is the default for everyone; dark
+     mode is an option the customer turns on with the moon/sun button
+     (remembered on this device). Applied before anything is drawn, so the
+     page never flashes the wrong colours. -->
 <script>
-(()=>{const d=document.documentElement,m=matchMedia("(prefers-color-scheme: dark)");
-const saved=()=>{try{const t=localStorage.getItem("tcp-theme");return t==="dark"||t==="light"?t:null}catch(e){return null}};
-const apply=()=>{const t=saved()||(m.matches?"dark":"light");d.dataset.theme=t;const c=document.querySelector('meta[name="theme-color"]');if(c)c.content=t==="dark"?"#1f2220":"#ffffff";};
-apply();if(m.addEventListener)m.addEventListener("change",apply);
+(()=>{const d=document.documentElement;
+const saved=()=>{try{return localStorage.getItem("tcp-theme")==="dark"?"dark":"light"}catch(e){return "light"}};
+const apply=()=>{const t=saved();d.dataset.theme=t;const c=document.querySelector('meta[name="theme-color"]');if(c)c.content=t==="dark"?"#232725":"#ffffff";};
+apply();
 window.tcpTheme={get:()=>d.dataset.theme,set:t=>{try{localStorage.setItem("tcp-theme",t)}catch(e){}apply()}};})();
 </script>
 <meta name="theme-color" content="#ffffff">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Cement People</title>
 <meta name="description" content="Cement, iron rods and binding wire from Krispol City, Kasoa, delivered across Kasoa and Greater Accra. See prices in Ghana cedis, build an estimate and send it on WhatsApp.">
@@ -46,7 +47,7 @@ window.tcpTheme={get:()=>d.dataset.theme,set:t=>{try{localStorage.setItem("tcp-t
      files are fetched early so the headline and prices draw in the right font. -->
 <link rel="preload" href="/fonts/montserrat-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/montserrat-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/_astro/index.DrMamctu.css"></head>
+<link rel="stylesheet" href="/_astro/index.B0Z8RLGa.css"></head>
 <body>
 
 <header><div class="hin">
@@ -141,7 +142,7 @@ window.tcpTheme={get:()=>d.dataset.theme,set:t=>{try{localStorage.setItem("tcp-t
 
 <script type="application/json" id="tcp-data">{"currency":"GH₵","taxRate":0,"business":{"phone":"055 846 3468","whatsapp":"233558463468","town":"Kasoa, Ghana","website":"thecementpeople.com"},"products":[{"id":"c1","cat":"Cement","name":"Supacem 32.5R","unit":"50 kg bag","price":75,"img":"/images/products/supacem-32-5.webp","alt":"Supacem Supa Fast 32.5R bag, green and kraft brown"},{"id":"c2","cat":"Cement","name":"Supacem 42.5R","unit":"50 kg bag","price":100,"img":"/images/products/supacem-42-5.webp","alt":"Supacem Supa Power 42.5R bag, kraft brown with black panel"},{"id":"c3","cat":"Cement","name":"Dzata 42.5R","unit":"50 kg bag","price":110,"img":"/images/products/dzata-42-5.webp","alt":"Dzata 42.5R bag, kraft brown with black and white lion panel"},{"id":"c4","cat":"Cement","name":"Ghacem Waterproof 42.5N","unit":"50 kg bag","price":120,"img":"/images/products/ghacem-waterproof-42-5.webp","alt":"Ghacem Super Strong Waterproof 42.5N bag, black and yellow panel with blue waves"},{"id":"i1","cat":"Iron Rods (Single Piece)","name":"Iron rod 16 mm","unit":"30 ft rod","price":102,"size":"16 mm"},{"id":"i2","cat":"Iron Rods (Single Piece)","name":"Iron rod 14 mm","unit":"30 ft rod","price":75,"size":"14 mm"},{"id":"i3","cat":"Iron Rods (Single Piece)","name":"Iron rod 12 mm","unit":"30 ft rod","price":58,"size":"12 mm"},{"id":"i4","cat":"Iron Rods (Single Piece)","name":"Iron rod 11.5 mm","unit":"30 ft rod","price":48,"size":"11.5 mm"},{"id":"i5","cat":"Iron Rods (Single Piece)","name":"Iron rod 10 mm","unit":"30 ft rod","price":40,"size":"10 mm"},{"id":"i6","cat":"Iron Rods (Single Piece)","name":"Iron rod 8 mm","unit":"30 ft rod","price":25,"size":"8 mm"},{"id":"j1","cat":"Iron Rods (Per Ton)","name":"Iron rod 16 mm","unit":"ton","price":7000,"size":"16 mm"},{"id":"j2","cat":"Iron Rods (Per Ton)","name":"Iron rod 14 mm","unit":"ton","price":7000,"size":"14 mm"},{"id":"j3","cat":"Iron Rods (Per Ton)","name":"Iron rod 12 mm","unit":"ton","price":7000,"size":"12 mm"},{"id":"j4","cat":"Iron Rods (Per Ton)","name":"Iron rod 11.5 mm","unit":"ton","price":7000,"size":"11.5 mm"},{"id":"j5","cat":"Iron Rods (Per Ton)","name":"Iron rod 10 mm","unit":"ton","price":7000,"size":"10 mm"},{"id":"j6","cat":"Iron Rods (Per Ton)","name":"Iron rod 8 mm","unit":"ton","price":7000,"size":"8 mm"},{"id":"i8","cat":"Binding Wire","name":"Binding wire","unit":"roll","price":60,"img":"/images/products/binding-wire.webp","alt":"Coil of black annealed binding wire"}],"banners":{"rods":{"src":"/images/products/iron-rods-1086.webp","srcset":"/images/products/iron-rods-720.webp 720w, /images/products/iron-rods-1086.webp 1086w, /images/products/iron-rods-1440.webp 1440w","w":1086,"h":363}},"categoryInfo":{"Iron Rods (Single Piece)":{"banner":"rods","note":"Sold by the piece. Each rod is 30 ft long."},"Iron Rods (Per Ton)":{"banner":"rods","note":"Available in all listed sizes."}}}</script>
 
-<script src="/scripts/quote-engine.js?v=ac4f56649d"></script>
+<script src="/scripts/quote-engine.js?v=4dc11b3938"></script>
 
 </body>
 </html>
