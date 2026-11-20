@@ -1,5 +1,5 @@
-# Preview: The Cement People - estimate section design review (16 Nov 2026)
+# Preview: The Cement People - Invoice Desk with payments and receipts (20 Nov 2026)
 A private preview copy of thecementpeople.com (not indexed by search engines).
-Neutral concrete 25%, interface ochre #FF9802 (switchable), no Enquire in the header, one-line footer logo.
-The bar at the top switches the estimate between "Current" and "Proposed".
-None of this is in the website's code; the live site is unchanged.
+Built from branch feature/invoice-desk-receipts (PR #32, on top of PR #31).
+Try it at /invoice-desk/: record a payment in step 6 and share the receipt.
+None of this is on the live site; thecementpeople.com is unchanged.
